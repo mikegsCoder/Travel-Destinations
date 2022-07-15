@@ -1,4 +1,4 @@
-@charset "utf-8";
+@import 'bootstrap/dist/css/bootstrap.css';
 
 body {
     background: url("../images/backgrounds/background.jpg") no-repeat center;
