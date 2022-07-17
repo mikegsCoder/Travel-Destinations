@@ -1,0 +1,22 @@
+.row5,
+.row5 a {
+    color: #AAAAAA;
+    background-color: #012B50;
+    text-decoration: underline;
+}
+
+.row5 a:hover {
+    color: rgb(83, 143, 167);
+}
+
+#site-footer {
+    padding-top: 10px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+#copyright p{
+    margin-bottom: 13px;
+}
