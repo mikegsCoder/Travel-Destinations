@@ -3,6 +3,9 @@
 
 import { Routes, Route } from 'react-router-dom';
 
+import { AuthProvider } from './contexts/AuthContext';
+
+
 import Header from './components/Header';
 import HomePage from './components/HomePage';
 import Login from './components/Login';
@@ -12,20 +15,22 @@ import Footer from './components/Footer';
 function App() {
 
     return (
-        <div className="App">
-            <Header />
-            
-            <main id="site-content">
-                <Routes>
-                    <Route path="/" element={<HomePage />} />
-                    <Route path="/home-page" element={<HomePage />} />
-                    <Route path="/login" element={<Login />} />
+        <AuthProvider>
+            <div className="App">
+                <Header />
 
-                </Routes>
-            </main>
+                <main id="site-content">
+                    <Routes>
+                        <Route path="/" element={<HomePage />} />
+                        <Route path="/home-page" element={<HomePage />} />
+                        <Route path="/login" element={<Login />} />
 
-            <Footer />
-        </div>
+                    </Routes>
+                </main>
+
+                <Footer />
+            </div>
+        </AuthProvider>
     );
 }
 
