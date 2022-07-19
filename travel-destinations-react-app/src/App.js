@@ -9,6 +9,7 @@ import { NotificationProvider } from './contexts/NotificationContext'
 import Header from './components/Header';
 import HomePage from './components/HomePage';
 import Login from './components/Login';
+import Logout from './components/Logout/Logout';
 
 import Footer from './components/Footer';
 
@@ -28,6 +29,7 @@ function App() {
                             <Route path="/" element={<HomePage />} />
                             <Route path="/home-page" element={<HomePage />} />
                             <Route path="/login" element={<Login />} />
+                            <Route path="/logout" element={<Logout />} />
 
                         </Routes>
                     </main>
