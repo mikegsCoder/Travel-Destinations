@@ -1,0 +1,10 @@
+.notification {
+    position: absolute;
+    top: 80px;
+    right: 30px;
+    /* top: 1px;
+    left: 50px; */
+    /* opacity: 0.85; */
+    color: white;
+    /* align-self: center; */
+}
