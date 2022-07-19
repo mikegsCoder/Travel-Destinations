@@ -4,7 +4,7 @@
 import { Routes, Route } from 'react-router-dom';
 
 import { AuthProvider } from './contexts/AuthContext';
-
+import { NotificationProvider } from './contexts/NotificationContext'
 
 import Header from './components/Header';
 import HomePage from './components/HomePage';
@@ -16,20 +16,22 @@ function App() {
 
     return (
         <AuthProvider>
-            <div className="App">
-                <Header />
+            <NotificationProvider>
+                <div className="App">
+                    <Header />
 
-                <main id="site-content">
-                    <Routes>
-                        <Route path="/" element={<HomePage />} />
-                        <Route path="/home-page" element={<HomePage />} />
-                        <Route path="/login" element={<Login />} />
+                    <main id="site-content">
+                        <Routes>
+                            <Route path="/" element={<HomePage />} />
+                            <Route path="/home-page" element={<HomePage />} />
+                            <Route path="/login" element={<Login />} />
 
-                    </Routes>
-                </main>
+                        </Routes>
+                    </main>
 
-                <Footer />
-            </div>
+                    <Footer />
+                </div>
+            </NotificationProvider>
         </AuthProvider>
     );
 }
