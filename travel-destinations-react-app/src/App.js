@@ -12,6 +12,8 @@ import Login from './components/Login';
 
 import Footer from './components/Footer';
 
+import Notification from './components/Common/Notification';
+
 function App() {
 
     return (
@@ -20,6 +22,7 @@ function App() {
                 <div className="App">
                     <Header />
 
+                    <Notification />
                     <main id="site-content">
                         <Routes>
                             <Route path="/" element={<HomePage />} />
