@@ -1,0 +1,19 @@
+.spinner-border{
+    width: 200px !important;
+    height: 200px !important;
+    font-size: 50px;
+    opacity: 0.6;
+    position: absolute;
+    left: calc(50vw - 100px);
+    top: calc(37vh - 50px);
+}
+
+.spinner-text{
+    opacity: 0.6;
+    font-size: 1.3rem;
+    font-weight: bold;
+    position: absolute;
+    left: calc(50vw - 66px);
+    top: calc(37vh + 30px);
+    color: white;
+}
