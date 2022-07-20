@@ -1,0 +1,108 @@
+@media screen and (min-height: 840px){
+    #site-content >div.fade.alert.alert-danger{
+        top: 10vh;
+    }
+}
+
+/* @media screen and (max-height: 760px){ */
+@media screen and (max-height: 840px){
+    #site-content >div.fade.alert.alert-danger{
+        top: 7.3vh;
+    }
+}
+
+.container-register {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 81vh;
+    width: 100%;
+}
+
+.form-box-register {
+    width: 350px;
+    height: 437px;
+    background-color: black;
+    padding: 20px;
+    font-size: 18px;
+    opacity: 0.8;
+    border-radius: 3%;
+}
+
+.form-box-register:hover{
+    border: 2px solid white;
+    width: 354px;
+    height: 441px;
+    opacity: 1;
+}
+
+.header-form {
+    margin-bottom: 0px;
+    text-align: center;
+}
+
+#register-message div p, 
+#register-message div a {
+    color: white;
+    text-align: center;
+}
+
+.input-group .mb-3{
+    display: inline-flex;
+}
+
+.input-group-text-2,
+.input-group-text-3{
+    position: relative;
+    left: 13px;
+    top: 5px;
+}
+
+.input-group-text-3{
+    margin-left: 4px;
+}
+
+.form-control-2{
+    text-indent: 6px;
+    position: relative;
+    left: 40px;
+    line-height: 1.5 !important;
+    border-radius: 5px !important;
+    width: 240px;
+}
+
+#register-message{
+    text-align: center;
+    text-decoration: underline;
+}
+
+#register-message a:hover{
+    color: rgb(83, 143, 167);
+}
+
+#register-btn{
+    position: relative;
+    left: 213px;
+    border: 2px solid;
+    border-radius: 8px;
+    margin-top: 27px;
+    margin-bottom: 19px;
+}
+
+#register-btn:hover{
+    cursor: pointer;
+    border: 2px solid rgb(19, 61, 112);
+    background-color: rgb(167, 167, 167);
+    color: blue;
+    text-decoration: underline;
+}
+
+#site-content >div.fade.alert.alert-danger{
+    position: absolute;
+    /* top: 10vh; */
+    left: 50%;
+    transform: translate(-50%);
+    border: 2px solid red;
+    padding: 0.4rem;
+    border-radius: 0.4rem;
+}
