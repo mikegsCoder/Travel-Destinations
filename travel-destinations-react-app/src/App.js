@@ -10,6 +10,7 @@ import Header from './components/Header';
 import HomePage from './components/HomePage';
 import Login from './components/Login';
 import Logout from './components/Logout/Logout';
+import Register from './components/Register';
 
 import Footer from './components/Footer';
 
@@ -30,6 +31,7 @@ function App() {
                             <Route path="/home-page" element={<HomePage />} />
                             <Route path="/login" element={<Login />} />
                             <Route path="/logout" element={<Logout />} />
+                            <Route path="/register" element={<Register />} />
 
                         </Routes>
                     </main>
