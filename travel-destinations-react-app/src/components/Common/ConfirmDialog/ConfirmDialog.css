@@ -1,0 +1,46 @@
+.modal-dialog{
+    margin-top: 20vh !important;
+}
+
+div.modal-header > button{
+    background-color: white;
+}
+
+.modal-content{
+    background-color: black !important;
+    color: white;
+    border: 2px solid rgb(189, 176, 176) !important;
+    border-radius: 0.3rem;
+}
+
+.modal-content:hover{
+    border: 2px solid white !important;
+}
+
+.modal-body{
+    font-size: 1.2rem;
+}
+
+div.modal-body p{
+    margin: 0;
+}
+
+.modal-footer .btn{
+    padding: 0.4rem 1rem;
+    border: 2px solid;
+    border-radius: 0.4rem;
+    color: rgb(189, 176, 176);
+    font-size: 1rem;
+}
+
+.modal-footer .btn:hover{
+    border: 2px solid rgb(83, 143, 167);
+}
+
+div.modal-footer > button.btn.btn-secondary{
+    background-color: rgb(49, 49, 121) !important;
+}
+
+.btn-primary{
+    background-color: rgb(126, 52, 52) !important;
+}
