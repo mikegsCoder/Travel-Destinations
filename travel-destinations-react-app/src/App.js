@@ -12,6 +12,8 @@ import Login from './components/Login';
 import Logout from './components/Logout/Logout';
 import Register from './components/Register';
 
+import CreateDestination from './components/CreateDestination';
+
 import Footer from './components/Footer';
 
 import Notification from './components/Common/Notification';
@@ -32,6 +34,7 @@ function App() {
                             <Route path="/login" element={<Login />} />
                             <Route path="/logout" element={<Logout />} />
                             <Route path="/register" element={<Register />} />
+                            <Route path="/create" element={<CreateDestination />} />
 
                         </Routes>
                     </main>
