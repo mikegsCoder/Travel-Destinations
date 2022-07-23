@@ -1,0 +1,126 @@
+#create-page {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 75vh;
+    width: 100%;
+    color: white;
+}
+
+#create-form {
+    box-sizing: content-box;
+    width: 50vw;
+    margin-top: auto;
+    background-color: black;
+    padding: 1.4rem !important;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    opacity: 0.8;
+    border-radius: 3%;
+    border: 2px solid rgb(167, 167, 167) !important;
+}
+
+#create-form:hover{
+    opacity: 1;
+    border: 2px solid white !important;
+}
+
+#create-btn {
+    position: relative;
+    width: 100%;
+    font-size: 1rem;
+    padding: 0.6rem 1rem;
+    border: 2px solid;
+    border-radius: 0.4rem;
+    margin-top: 5px;
+}
+
+#create-btn:hover {
+    cursor: pointer;
+    border: 2px solid rgb(83, 143, 167);
+    background-color: rgb(167, 167, 167);
+    color: blue;
+    text-decoration: underline;
+}
+
+#create-form {
+    max-width: 30rem;
+    margin-top: 10vh;
+}
+
+#create-form,
+#create-form fieldset,
+#create-form legend,
+#create-form label,
+#create-form input,
+#create-form textarea,
+#create-form select {
+    display: block;
+    width: 100%;
+    border: none;
+    padding: 0.4rem;
+    color: white;
+}
+
+#create-form fieldset,
+#create-form input,
+#create-form textarea,
+#create-form select {
+    border: 1px solid #666;
+    border-radius: 0.3rem;
+}
+
+#create-form fieldset:focus,
+#create-form input:focus,
+#create-form textarea:focus,
+#create-form select:focus {
+    outline: none;
+    border-color: white;
+}
+
+#create-form textarea {
+    resize: none;
+    background: black;
+}
+
+#create-form fieldset,
+#create-form legend {
+    border: 1px solid #666;
+    background: black;
+    border-radius: 0.3rem;
+}
+
+#category {
+    background-color: black;
+}
+
+#create-form fieldset {
+    /* padding: 1em 2em 2em 2em; */
+    padding: 1em 1em 0.7em 1em;
+    position: relative;
+}
+
+#create-form legend {
+    width: 60%;
+    padding: 0.2rem 1rem;
+    left: -1px;
+    top: -1.5rem;
+    position: absolute;
+}
+
+#create-form label {
+    font-weight: bold;
+}
+
+#create-form textarea {
+    border-radius: 0.5rem;
+    padding: 0.8rem;
+}
+
+.description {
+    width: 17rem;
+    height: 10vh;
+    padding: 2rem;
+    overflow: auto;
+}
