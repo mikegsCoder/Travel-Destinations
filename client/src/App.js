@@ -11,6 +11,7 @@ import HomePage from './components/HomePage';
 import Login from './components/Login';
 import Logout from './components/Logout/Logout';
 import Register from './components/Register';
+import AllDestinations from './components/AllDestinations/';
 
 import CreateDestination from './components/CreateDestination';
 
@@ -34,6 +35,7 @@ function App() {
                             <Route path="/login" element={<Login />} />
                             <Route path="/logout" element={<Logout />} />
                             <Route path="/register" element={<Register />} />
+                            <Route path="/all-destinations/*" element={<AllDestinations />} />
                             <Route path="/create" element={<CreateDestination />} />
 
                         </Routes>
