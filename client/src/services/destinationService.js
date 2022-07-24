@@ -1,5 +1,9 @@
 const baseUrl = 'http://localhost:3030/data';
 
+import * as request from './requester';
+
+export const getAllDestinations = () => request.get(`${baseUrl}/destinations`);
+
 export const createDestination = async (destinationData, token) => {
     let response = await fetch(`${baseUrl}/destinations`, {
         method: 'POST',
