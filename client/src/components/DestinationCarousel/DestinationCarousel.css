@@ -1,0 +1,28 @@
+.carousel-inner {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    height: 88vh;
+    overflow:hidden !important;
+}
+
+.carousel-inner h3{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+} 
+
+.carousel-inner p{
+    margin-bottom: -1rem;
+    margin-bottom: 10px;
+}
+
+.card-img{
+    align-self:auto;
+    width: 15rem;
+    height: 88vh;
+    position: relative;
+    overflow: hidden;
+    padding: 0rem;
+}
+
+.card-img img{
+    border: 2px solid white;
+    border-radius: 0.3rem;
+}
