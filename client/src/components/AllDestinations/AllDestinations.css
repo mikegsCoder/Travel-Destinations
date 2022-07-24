@@ -1,0 +1,111 @@
+
+@media only screen and (min-width: 1050px) {
+
+    /* Carousel image */
+    .d-block {
+        height: 85vh !important;
+    }
+
+    .carousel-item {
+        height: 90vh;
+        text-shadow: 3px 3px 3px black;
+    }
+
+    /* Carousel indicator position */
+    .carousel-indicators {
+        bottom: -1.8vh !important;
+    }
+}
+
+@media only screen and (max-width: 1300px) {
+
+    /* Carousel image */
+    .d-block {
+        height: 83vh !important;
+    }
+
+    .carousel-item {
+        height: 86vh;
+        text-shadow: 3px 3px 3px black;
+    }
+
+    /* Carousel indicator position */
+    .carousel-indicators {
+        bottom: 0.5vh !important;
+    }
+}
+
+@media only screen and (max-height: 970px) {
+
+    /* Carousel image */
+    .d-block {
+        height: 82vh !important;
+    }
+
+    .carousel-item {
+        height: 82vh;
+        text-shadow: 3px 3px 3px black;
+    }
+
+    /* Carousel indicator position */
+    .carousel-indicators {
+        bottom: 0.6vh !important;
+    }
+}
+
+@media only screen and (max-height: 780px) {
+
+    /* Carousel image */
+    .d-block {
+        height: 80vh !important;
+    }
+
+    .carousel-item {
+        height: 82vh;
+        text-shadow: 3px 3px 3px black;
+    }
+
+    /* Carousel indicator position */
+    .carousel-indicators {
+        bottom: 2.2vh !important;
+    }
+}
+
+@media only screen and (max-height: 680px) {
+
+    /* Carousel image */
+    .d-block {
+        height: 75vh !important;
+    }
+
+    .carousel-item {
+        height: 82vh;
+        text-shadow: 3px 3px 3px black;
+    }
+
+    /* Carousel indicator position */
+    .carousel-indicators {
+        bottom: 6vh !important;
+    }
+}
+
+.home-carousel {
+    display: 'block';
+    position: relative;
+    vertical-align: middle;
+    align-self: center;
+    margin: 1% 5%;
+    width: 90%;
+    font-size: 15px;
+}
+
+.home-carousel h4 {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    text-transform: uppercase;
+    font-size: 1rem;
+    color: rgb(236, 238, 243);
+    text-align: center;
+    margin-top: -1.3vh;
+    /* margin-bottom: -0.02vh; */
+    text-shadow: 3px 3px 3px black;
+}
