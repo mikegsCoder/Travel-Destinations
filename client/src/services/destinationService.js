@@ -6,6 +6,12 @@ export const getAllDestinations = () => request.get(`${baseUrl}/destinations`);
 
 export const getRecentDestinations = () => request.get(`${baseUrl}/destinations?sortBy=_createdOn%20desc&distinct=category`);
 
+export const getByCategory = (category) => {
+    let query = encodeURIComponent(`category="${category}"`);
+
+    return request.get(`${baseUrl}/destinations?where=${query}`);
+};
+
 export const createDestination = async (destinationData, token) => {
     let response = await fetch(`${baseUrl}/destinations`, {
         method: 'POST',
