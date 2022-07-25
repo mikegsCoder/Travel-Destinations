@@ -1,0 +1,20 @@
+.recent-carousel {
+    display: 'block';
+    position: relative;
+    vertical-align: middle;
+    align-self: center;
+    margin: 1% 5%;
+    width: 90%;
+    max-height: 85vh;
+}
+
+.recent-carousel h4 {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    text-transform: uppercase;
+    font-size: 1rem;
+    color: rgb(236, 238, 243);
+    text-align: center;
+    margin-top: -1.3vh;
+    /* margin-bottom: -0.02vh; */
+    text-shadow: 3px 3px 3px black;
+}
