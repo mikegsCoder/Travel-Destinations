@@ -12,6 +12,7 @@ import Login from './components/Login';
 import Logout from './components/Logout/Logout';
 import Register from './components/Register';
 import AllDestinations from './components/AllDestinations/';
+import RecentDestinations from './components/RecentDestinations';
 
 import CreateDestination from './components/CreateDestination';
 
@@ -36,6 +37,7 @@ function App() {
                             <Route path="/logout" element={<Logout />} />
                             <Route path="/register" element={<Register />} />
                             <Route path="/all-destinations/*" element={<AllDestinations />} />
+                            <Route path="/recent" element={<RecentDestinations />} />
                             <Route path="/create" element={<CreateDestination />} />
 
                         </Routes>
