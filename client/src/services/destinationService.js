@@ -4,6 +4,8 @@ import * as request from './requester';
 
 export const getAllDestinations = () => request.get(`${baseUrl}/destinations`);
 
+export const getRecentDestinations = () => request.get(`${baseUrl}/destinations?sortBy=_createdOn%20desc&distinct=category`);
+
 export const createDestination = async (destinationData, token) => {
     let response = await fetch(`${baseUrl}/destinations`, {
         method: 'POST',
