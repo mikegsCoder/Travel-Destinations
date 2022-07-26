@@ -14,6 +14,7 @@ import Register from './components/Register';
 import AllDestinations from './components/AllDestinations/';
 import RecentDestinations from './components/RecentDestinations';
 import ByCategory from './components/ByCategory';
+import MyDestinations from './components/MyDestinations';
 
 import CreateDestination from './components/CreateDestination';
 
@@ -40,6 +41,7 @@ function App() {
                             <Route path="/all-destinations/*" element={<AllDestinations />} />
                             <Route path="/recent" element={<RecentDestinations />} />
                             <Route path="/by-category/:category" element={<ByCategory />} />
+                            <Route path="/my-destinations" element={<PrivateRoute><MyDestinations /></PrivateRoute>} />
                             <Route path="/create" element={<CreateDestination />} />
 
                         </Routes>
