@@ -12,6 +12,12 @@ export const getByCategory = (category) => {
     return request.get(`${baseUrl}/destinations?where=${query}`);
 };
 
+export const getMyDestinations = (ownerId) => {
+    let query = encodeURIComponent(`_ownerId="${ownerId}"`);
+
+    return request.get(`${baseUrl}/destinations?where=${query}`);
+};
+
 export const createDestination = async (destinationData, token) => {
     let response = await fetch(`${baseUrl}/destinations`, {
         method: 'POST',
