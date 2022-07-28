@@ -15,9 +15,10 @@ import AllDestinations from './components/AllDestinations/';
 import RecentDestinations from './components/RecentDestinations';
 import ByCategory from './components/ByCategory';
 import MyDestinations from './components/MyDestinations';
-import Details from './components/Details';
-
 import CreateDestination from './components/CreateDestination';
+import Details from './components/Details';
+import EditDestination from './components/EditDestination';
+
 
 import Footer from './components/Footer';
 
@@ -45,6 +46,7 @@ function App() {
                             <Route path="/my-destinations" element={<PrivateRoute><MyDestinations /></PrivateRoute>} />
                             <Route path="/create" element={<CreateDestination />} />
                             <Route path="/details/:destinationId" element={<Details />} />
+                            <Route path="/edit/:destinationId" element={<PrivateRoute><EditDestination /></PrivateRoute>} />
 
                         </Routes>
                     </main>
