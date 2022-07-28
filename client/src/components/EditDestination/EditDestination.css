@@ -1,0 +1,139 @@
+#edit-page{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    vertical-align: middle;
+    justify-content: center;
+    height: 75vh;
+    width: 100%;
+    color: white;
+}
+
+#edit-form{
+    width: 50vw;
+    margin-top: auto;
+    background-color: black;
+    padding: 1.4rem !important;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    opacity: 0.8;
+    border-radius: 3%;
+    border: 2px solid rgb(167, 167, 167) !important;
+}
+
+#edit-form:hover{
+    opacity: 1;
+    border: 2px solid white !important;
+}
+
+.field{
+    margin-bottom: 5px ;
+}
+
+#edit-destination-btn{
+    position: relative;
+    width: 100%;
+    font-size: 1rem;
+    padding: 0.6rem 1rem;
+    border: 2px solid;
+    border-radius: 0.4rem;
+    margin-top: 5px;
+}
+
+#edit-destination-btn:hover{
+    cursor: pointer;
+    border: 2px solid rgb(83, 143, 167);
+    background-color: rgb(167, 167, 167);
+    color: blue;
+    text-decoration: underline;
+}
+
+#edit-form {
+    max-width: 30rem;
+    margin-top: 10vh;
+}
+
+#edit-form,
+#edit-form fieldset,
+#edit-form legend,
+#edit-form label,
+#edit-form input,
+#edit-form textarea,
+#edit-form select {
+    display: block;
+    width: 100%;
+    border: none;
+    padding: 0.4rem;
+    color: white;
+}
+
+#edit-form fieldset,
+#edit-form input,
+#edit-form textarea,
+#edit-form select {
+    border: 1px solid #666;
+    border-radius: 0.3rem;
+}
+
+#edit-form fieldset:focus,
+#edit-form input:focus,
+#edit-form textarea:focus,
+#edit-form select:focus {
+    outline: none;
+    border-color: white;
+}
+
+#edit-form textarea {
+    resize: none;
+    background: black;
+}
+
+#edit-form fieldset,
+#edit-form legend {
+    border: 1px solid #666;
+    background: black;
+    border-radius: 0.3rem;
+}
+
+#category {
+    background-color: black;
+}
+
+#edit-form fieldset {
+    padding: 1em 1em 0.7em 1em;
+    position: relative;
+}
+
+#edit-form legend {
+    width: 60%;
+    padding: 0.2rem 1rem;
+    left: -1px;
+    top: -1.5rem;
+    position: absolute;
+}
+
+#edit-form label {
+    font-weight: bold;
+}
+
+#edit-form textarea {
+    border-radius: 0.5rem;
+    padding: 0.8rem;
+}
+
+.description {
+    width: 17rem;
+    height: 10vh;
+    padding: 2rem;
+    overflow: auto;
+}
+
+#edit-page > div{
+    position: absolute;
+    top: 8.5vh;
+    left: 50%;
+    transform: translate(-50%);
+    /* width: 100%; */
+    border: 2px solid red;
+}
