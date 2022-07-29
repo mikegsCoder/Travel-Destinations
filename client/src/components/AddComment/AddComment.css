@@ -1,0 +1,170 @@
+@media screen and (min-height: 880px) {
+    #create-comment-page {
+        height: 70vh;
+    }
+}
+
+@media screen and (max-height: 880px) {
+    #create-comment-page {
+        height: 80vh;
+    }
+}
+
+@media screen and (max-height: 750px) {
+    #create-comment-page {
+        height: 87vh;
+    }
+}
+
+#create-comment-page {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* height: 70vh; */
+    width: 100%;
+    color: white;
+}
+
+#create-comment-form {
+    box-sizing: content-box;
+    width: 50vw;
+    margin-top: auto;
+    background-color: black;
+    padding: 1.4rem !important;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    opacity: 0.8;
+    border-radius: 3%;
+    border: 2px solid rgb(167, 167, 167) !important;
+}
+
+#create-comment-form:hover {
+    opacity: 1;
+    border: 2px solid white !important;
+}
+
+.create-comment-buttons{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+#create-comment-btn,
+#cancel-create-btn {
+    width: 40%;
+    font-size: 1rem;
+    padding: 0.6rem 1rem;
+    border: 2px solid;
+    border-radius: 0.4rem;
+    margin-top: 35px;
+}
+
+#create-comment-btn:hover,
+#cancel-create-btn:hover {
+    cursor: pointer;
+    border: 2px solid rgb(83, 143, 167);
+    background-color: rgb(167, 167, 167);
+    color: blue;
+    text-decoration: underline;
+}
+
+#create-comment-form {
+    max-width: 30rem;
+}
+
+#comment-text{
+    color: white;
+}
+
+#create-comment-form,
+#create-comment-form fieldset,
+#create-comment-form legend,
+#create-comment-form label,
+#create-comment-form textarea {
+    display: block;
+    width: 100%;
+    border: none;
+    padding: 0.7rem;
+}
+
+#create-comment-form textarea {
+    background: transparent;
+    color: white;
+}
+
+#comment-text:focus {
+    border-color: white !important;
+}
+
+#create-comment-form fieldset,
+#create-comment-form legend {
+    border: 1px solid #666;
+    background: black;
+    border-radius: 0.3rem;
+}
+
+#category {
+    background-color: black;
+}
+
+#create-comment-form fieldset {
+    padding: 1em 2em 2em 2em;
+    position: relative;
+}
+
+#create-comment-text{
+    height: 13rem;
+    border: 1px solid #666 !important;
+}
+
+#create-comment-form legend {
+    width: 60%;
+    padding: 0.2rem 1rem;
+    position: absolute;
+    left: -1px;
+    top: -1.5rem;
+}
+
+#create-comment-form label {
+    font-weight: bold;
+}
+
+.field .input {
+    display: flex;
+    position: relative;
+    align-items: center;
+    border: 1px solid;
+}
+
+.field .input input {
+    border: none;
+    flex: 1 1 auto;
+    padding: 0.4rem;
+    outline: none;
+    background: transparent;
+    z-index: 2;
+    order: 2;
+}
+
+#create-comment-form textarea {
+    resize: none;
+    border-radius: 0.5rem;
+    padding: 0.8rem;
+}
+
+.description {
+    width: 17rem;
+    height: 10vh;
+    padding: 2rem;
+    overflow: auto;
+}
+
+#create-comment-page > div{
+    position: absolute;
+    top: 12vh;
+    left: 50%;
+    transform: translate(-50%);
+    /* width: 100%; */
+    border: 2px solid red;
+}
