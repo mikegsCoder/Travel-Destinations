@@ -18,6 +18,7 @@ import MyDestinations from './components/MyDestinations';
 import CreateDestination from './components/CreateDestination';
 import Details from './components/Details';
 import EditDestination from './components/EditDestination';
+import AddComment from './components/AddComment';
 
 
 import Footer from './components/Footer';
@@ -47,6 +48,7 @@ function App() {
                             <Route path="/create" element={<CreateDestination />} />
                             <Route path="/details/:destinationId" element={<Details />} />
                             <Route path="/edit/:destinationId" element={<PrivateRoute><EditDestination /></PrivateRoute>} />
+                            <Route path="/add-comment/:destinationId" element={<AddComment />} />
 
                         </Routes>
                     </main>
