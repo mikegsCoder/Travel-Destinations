@@ -20,7 +20,7 @@ import Details from './components/Details';
 import EditDestination from './components/EditDestination';
 import AddComment from './components/AddComment';
 import CommentList from './components/CommentList';
-
+import EditComment from './components/EditComment';
 import Footer from './components/Footer';
 
 import Notification from './components/Common/Notification';
@@ -50,6 +50,7 @@ function App() {
                             <Route path="/edit/:destinationId" element={<PrivateRoute><EditDestination /></PrivateRoute>} />
                             <Route path="/add-comment/:destinationId" element={<AddComment />} />
                             <Route path="/comments/:destinationId" element={<CommentList />} />
+                            <Route path="/edit-comment/:commentId" element={<EditComment />} />
 
                         </Routes>
                     </main>
