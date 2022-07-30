@@ -5,11 +5,10 @@ import './Footer.css';
 const Footer = () => {
 
     return (
-        <div id="site-footer" className="wrapper row5">
-            <div id="copyright" className="hoc clear">
-                <p className="fl_left">Copyright &copy; 2022 - <a href="https://mikegscoder.github.io/">mikegsCoder</a></p>
-                <p className="fl_right">React Course Project @  <a href="https://softuni.bg/">SoftUni</a></p>
-            </div>
+        <div className="site-footer">
+            {/* <p className="footer-left">Copyright &copy; 2022 - <a href="https://mikegscoder.github.io/">mikegsCoder</a></p> */}
+            <p className="footer-left">Travel Destinations v_1.3 &copy; 2022 - <a href="https://mikegscoder.github.io/">mikegsCoder</a></p>
+            <p className="footer-right">React Course Project @  <a href="https://softuni.bg/">SoftUni</a></p>
         </div>
     );
 }
