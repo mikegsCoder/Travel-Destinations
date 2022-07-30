@@ -22,6 +22,7 @@ import AddComment from './components/AddComment';
 import CommentList from './components/CommentList';
 import EditComment from './components/EditComment';
 import Footer from './components/Footer';
+import NotFound from './components/404';
 
 import Notification from './components/Common/Notification';
 import PrivateRoute from './components/Common/PrivateRoute';
@@ -53,6 +54,7 @@ function App() {
                             <Route path="/add-comment/:destinationId" element={<AddComment />} />
                             <Route path="/comments/:destinationId" element={<CommentList />} />
                             <Route path="/edit-comment/:commentId" element={<EditComment />} />
+                            <Route path="*" element={<NotFound />} />
 
                         </Routes>
                     </main>
