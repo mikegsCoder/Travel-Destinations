@@ -24,6 +24,8 @@ import EditComment from './components/EditComment';
 import Footer from './components/Footer';
 
 import Notification from './components/Common/Notification';
+import PrivateRoute from './components/Common/PrivateRoute';
+import GuardedRoute from './components/Common/GuardedRoute';
 
 function App() {
 
