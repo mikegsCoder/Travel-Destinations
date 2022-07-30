@@ -27,7 +27,7 @@ const Header = () => {
 
     const userRightNavigation = (
         <>
-            <li><p id="user-email">Welcome: {user.email}</p></li>
+            <li><p className="user-email">Welcome: {user.email}</p></li>
             <li><Link to="/logout">Logout</Link></li>
         </>
     );
@@ -52,51 +52,47 @@ const Header = () => {
             return;
         }
 
-        // console.log(category);
-
         navigate(`/by-category/${category}`);
     }
 
     return (
-        <div className="wrapper row0">
-            <div id="topbar" className="hoc clear">
-                <div className="fl_left">
-                    <ul className="nospace">
-                        <li><Link to="/home-page"><FontAwesomeIcon icon={faHouseChimney} className="font-awesome-icon" /></Link></li>
-                        {/* <li><a href="#">About</a></li> */}
-                        <li><Link to="/all-destinations">All Destinations</Link></li>
-                        <li><Link to="/recent">Recent Destinations</Link></li>
-                        <li>
-                            <p className="field" id="search-by-category">
-                                {/* <label htmlFor="category">Category</label> */}
-                                <span className="input">
-                                    <select id="search-category" name="category" defaultValue={"Select"} onChange={onCategorySelect}>
-                                        <option value="Select">Select Category :</option>
-                                        <option value="Mountains">Mountains</option>
-                                        <option value="Sea-and-ocean">Sea and ocean</option>
-                                        <option value="Lakes-and-rivers">Lakes and rivers</option>
-                                        <option value="Caves">Caves</option>
-                                        <option value="Historical-places">Historicl places</option>
-                                        <option value="Other">Other</option>
-                                    </select>
-                                </span>
-                            </p>
-                        </li>
-                        {user.email
-                            ? userLeftNavigation
-                            : null
-                        }
-                    </ul>
-                </div>
-                <div className="fl_right">
-                    <ul className="nospace">
-                        {user.email
-                            ? userRightNavigation
-                            : guestNavigation
-                        }
-                    </ul>
-                </div>
-            </div>
+        <div className='navbar'>
+            <ul className='navbar-left' id='left-nav'>
+                {/* <li><Link to="/home-page"><FontAwesomeIcon icon={faHouseChimney} className="font-awesome-icon-home" /></Link></li> */}
+                <li>
+                    <Link to="/home-page" className='globe-rotating'>
+                        <img src="/images/common/globe.gif" alt="globe" />
+                    </Link>
+                </li>
+                <li><Link to="/all-destinations">All Destinations</Link></li>
+                <li><Link to="/recent">Recent Destinations</Link></li>
+                <li>
+                    <p className="field" id="search-by-category">
+                        {/* <label htmlFor="category">Category</label> */}
+                        <span className="input">
+                            <select id="search-category" name="category" defaultValue={"Select"} onChange={onCategorySelect}>
+                                <option value="Select">SELECT CATEGORY</option>
+                                <option value="Mountains">Mountains</option>
+                                <option value="Sea-and-ocean">Sea and ocean</option>
+                                <option value="Lakes-and-rivers">Lakes and rivers</option>
+                                <option value="Caves">Caves</option>
+                                <option value="Historical-places">Historical places</option>
+                                <option value="Other">Other</option>
+                            </select>
+                        </span>
+                    </p>
+                </li>
+                {user.email
+                    ? userLeftNavigation
+                    : null
+                }
+            </ul>
+            <ul className='navbar-right' id='right-nav'>
+                {user.email
+                    ? userRightNavigation
+                    : guestNavigation
+                }
+            </ul>
         </div>
     );
 }
