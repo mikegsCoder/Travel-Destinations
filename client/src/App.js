@@ -4,6 +4,7 @@
 import { Routes, Route } from 'react-router-dom';
 
 import { AuthProvider } from './contexts/AuthContext';
+import { ApplicationNotificationProvider } from './contexts/ApplicationNotificationContext';
 import { NotificationProvider } from './contexts/NotificationContext'
 
 import Header from './components/Header';
@@ -37,43 +38,45 @@ function App() {
         <ErrorBoundary>
 
             <AuthProvider>
-                <NotificationProvider>
-                    <div className="App">
-                        <Header />
-                        <ApplicationNotification />
+                <ApplicationNotificationProvider>
+                    <NotificationProvider>
+                        <div className="App">
+                            <Header />
+                            <ApplicationNotification />
 
-                        <Notification />
-                        <main id="site-content">
-                            <Routes>
+                            <Notification />
+                            <main id="site-content">
+                                <Routes>
 
-                                <Route path="/" element={<HomePage />} />
-                                <Route path="/home-page" element={<HomePage />} />
-                                <Route path="/login" element={<Login />} />
-                                <Route path="/register" element={<Register />} />
-                                <Route path="/all-destinations/*" element={<AllDestinations />} />
-                                <Route path="/recent" element={<RecentDestinations />} />
-                                <Route path="/by-category/:category" element={<ByCategory />} />
-                                <Route path="/details/:destinationId" element={<Details />} />
-                                <Route path="/comments/:destinationId" element={<CommentList />} />
+                                    <Route path="/" element={<HomePage />} />
+                                    <Route path="/home-page" element={<HomePage />} />
+                                    <Route path="/login" element={<Login />} />
+                                    <Route path="/register" element={<Register />} />
+                                    <Route path="/all-destinations/*" element={<AllDestinations />} />
+                                    <Route path="/recent" element={<RecentDestinations />} />
+                                    <Route path="/by-category/:category" element={<ByCategory />} />
+                                    <Route path="/details/:destinationId" element={<Details />} />
+                                    <Route path="/comments/:destinationId" element={<CommentList />} />
 
-                                <Route path="/edit/:destinationId" element={<PrivateRoute><EditDestination /></PrivateRoute>} />
-                                <Route path="/edit-comment/:commentId" element={<PrivateRoute><EditComment /></PrivateRoute>} />
+                                    <Route path="/edit/:destinationId" element={<PrivateRoute><EditDestination /></PrivateRoute>} />
+                                    <Route path="/edit-comment/:commentId" element={<PrivateRoute><EditComment /></PrivateRoute>} />
 
-                                <Route element={<GuardedRoute />} >
-                                    <Route path="/logout" element={<Logout />} />
-                                    <Route path="/my-destinations" element={<MyDestinations />} />
-                                    <Route path="/create" element={<CreateDestination />} />
-                                    <Route path="/add-comment/:destinationId" element={<CreateComment />} />
-                                </Route>
+                                    <Route element={<GuardedRoute />} >
+                                        <Route path="/logout" element={<Logout />} />
+                                        <Route path="/my-destinations" element={<MyDestinations />} />
+                                        <Route path="/create" element={<CreateDestination />} />
+                                        <Route path="/add-comment/:destinationId" element={<CreateComment />} />
+                                    </Route>
 
-                                <Route path="*" element={<NotFound />} />
+                                    <Route path="*" element={<NotFound />} />
 
-                            </Routes>
-                        </main>
+                                </Routes>
+                            </main>
 
-                        <Footer />
-                    </div>
-                </NotificationProvider>
+                            <Footer />
+                        </div>
+                    </NotificationProvider>
+                </ApplicationNotificationProvider>
             </AuthProvider>
         </ErrorBoundary>
     );

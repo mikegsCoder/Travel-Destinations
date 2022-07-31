@@ -3,21 +3,22 @@ import './EditComment.css';
 import { useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 
-import * as destinationService from '../../services/destinationService';
-import { useAuthContext } from '../../contexts/AuthContext';
-import { useNotificationContext, types } from '../../contexts/NotificationContext';
+import * as commentService from '../../services/commentService';
+import * as dataValidation from '../../services/commentDataValidationService';
+import * as constants from '../../constants/constants';
+import { useApplicationNotificationContext, types } from '../../contexts/ApplicationNotificationContext';
+import { useInvalidDataNotificationContext, debounce } from '../../contexts/InvalidDataNotificationContext';
 import useCommentState from '../../hooks/useCommentState';
-import { Alert } from 'react-bootstrap';
+import LoadingSpinner from '../Common/Spinner';
 
-const Create = () => {
-    const { user } = useAuthContext();
-    const { addNotification } = useNotificationContext();
+const EditComment = () => {
+    const { addNotification } = useApplicationNotificationContext();
     const { commentId } = useParams();
+    const { addInvalidDataNotification } = useInvalidDataNotificationContext();
     const [comment, setComment] = useCommentState(commentId);
-    const [errors, setErrors] = useState({name: false})
+    const [isLoading, setIsLoading] = useState(false);
+    const [errors, setErrors] = useState('')
     const navigate = useNavigate();
-
-    // console.log(comment);
 
     const onCommentEdit = (e) => {
         e.preventDefault();
@@ -25,62 +26,90 @@ const Create = () => {
         const formData = new FormData(e.currentTarget);
         const commentContent = formData.get('comment');
 
+        const validationResult = dataValidation.commentValidation(commentContent);
+
+        if (validationResult) {
+            setErrors('comment');
+            addInvalidDataNotification(validationResult);
+            return;
+        };
+
+        setIsLoading(true);
+
         let commentData = {
             destinationId: comment.destinationId,
             comment: commentContent,
             userEmail: comment.userEmail
-        }
+        };
 
-        // let commentData = Object.fromEntries(new FormData(e.currentTarget));
-
-        destinationService.editComment(commentId, commentData)
-            .then(navigate(`/details/${comment.destinationId}`)); // add notification?
-    }
+        commentService.editComment(commentId, commentData)
+            .then(result => {
+                setIsLoading(false);
+                addNotification(constants.appNotificationMessages.commentEditSuccess, types.success);
+                navigate(`/details/${comment.destinationId}`);
+            })
+            .catch(err => {
+                addNotification(err, types.danger);
+                setIsLoading(false);
+            });
+    };
 
     const onCancelButtonClick = (e) => {
         e.preventDefault();
         navigate(`/details/${comment.destinationId}`);
-    }
+    };
 
-    const commentChangeHandler = (e) => {
-        let currentComment = e.target.value;
+    const verifyChangeHandlerData = (value) => {
+        const validationResult = dataValidation.commentValidation(value);
 
-        if (currentComment.length < 3) {
-            setErrors(state => ({...state, name: 'Comment should be at least 3 characters!'}))
-        } else if (currentComment.length > 300) {
-            setErrors(state => ({...state, name: 'Comment should be max 300 characters!'}))
+        if (validationResult) {
+            addInvalidDataNotification(validationResult);
+            setErrors('comment');
         } else {
-            setErrors(state => ({...state, name: false}))
-        }
-    }
+            setErrors('');
+        };
+    };
 
-    return (
+    const commentChangeHandler = debounce((e) =>
+        verifyChangeHandlerData(e.target.value)
+    );
+
+    const editCommentPage = (
         <section id="edit-comment-page" className="create">
-            <Alert variant="danger" show={errors.name}>{errors.name}</Alert>
-            
             <form id="edit-comment-form" onSubmit={onCommentEdit} method="PUT">
                 <fieldset>
                     <legend>Edit Comment</legend>
                     <p className="field">
                         <label htmlFor="comment">Comment :</label>
                         <span className="input">
-                            <textarea 
-                                name="comment" 
-                                id="edit-comment-text" 
-                                spellCheck="false" 
-                                defaultValue={comment.comment} 
+                            <textarea
+                                name="comment"
+                                id="edit-comment-text"
+                                spellCheck="false"
+                                style={{
+                                    borderColor: errors == 'comment'
+                                        ? 'red'
+                                        : '#666'
+                                }}
+                                defaultValue={comment.comment}
                                 onChange={commentChangeHandler}>
                             </textarea>
                         </span>
                     </p>
                     <div className="edit-comment-buttons">
-                        <button type="cancel" id="edit-cancel-create-btn" onClick={onCancelButtonClick}>Cancel</button>
-                        <button type="submit" id="edit-create-comment-btn">Edit Comment</button>
+                        <button type="cancel" className="btn-secondary btn-block" id="edit-cancel-create-btn" onClick={onCancelButtonClick}>Cancel</button>
+                        <button type="submit" className="btn-secondary btn-block" id="edit-create-comment-btn">Edit Comment</button>
                     </div>
                 </fieldset>
             </form>
         </section>
     );
+
+    return (
+        <>
+            {isLoading ? <LoadingSpinner /> : editCommentPage}
+        </>
+    );
 }
 
-export default Create;
+export default EditComment;

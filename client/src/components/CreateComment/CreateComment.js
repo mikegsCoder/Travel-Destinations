@@ -3,34 +3,43 @@ import './CreateComment.css';
 import { useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 
-import * as destinationService from '../../services/destinationService';
+import * as commentService from '../../services/commentService'
+import * as dataValidation from '../../services/commentDataValidationService';
+import * as constants from '../../constants/constants';
 import { useAuthContext } from '../../contexts/AuthContext';
-import { useNotificationContext, types } from '../../contexts/NotificationContext';
-import { Alert } from 'react-bootstrap';
+import { useApplicationNotificationContext, types } from '../../contexts/ApplicationNotificationContext';
+import { useInvalidDataNotificationContext, debounce } from '../../contexts/InvalidDataNotificationContext';
 import LoadingSpinner from '../Common/Spinner';
-// import useDestinationState from '../../hooks/useDestinationState';
 
 const CreateComment = () => {
     const { user } = useAuthContext();
-    const { addNotification } = useNotificationContext();
+    const { addNotification } = useApplicationNotificationContext();
     const { destinationId } = useParams();
-    const [errors, setErrors] = useState({ name: false })
+    const { addInvalidDataNotification } = useInvalidDataNotificationContext();
     const [isLoading, setIsLoading] = useState(false);
-    // const [destination, setDestination] = useDestinationState(destinationId);
+    const [errors, setErrors] = useState('')
     const navigate = useNavigate();
 
     const onCommentCreate = (e) => {
         e.preventDefault();
         const formData = new FormData(e.currentTarget);
-        const comment = formData.get('comment');
+        const commentContent = formData.get('comment');
+
+        const validationResult = dataValidation.commentValidation(commentContent);
+
+        if (validationResult) {
+            setErrors('comment');
+            addInvalidDataNotification(validationResult);
+            return;
+        };
 
         setIsLoading(true);
 
-        destinationService.createComment(destinationId, comment, user.email, user.accessToken)
+        commentService.createComment(destinationId, commentContent, user.email, user.accessToken)
             .then(() => {
                 setIsLoading(false);
                 navigate(`/details/${destinationId}`);
-                addNotification('Successfully commented destination!', types.success);
+                addNotification(constants.appNotificationMessages.commentCreateSuccess, types.success);
             })
             .catch(err => {
                 setIsLoading(false);
@@ -43,22 +52,23 @@ const CreateComment = () => {
         navigate(`/details/${destinationId}`);
     };
 
-    const commentChangeHandler = (e) => {
-        let currentComment = e.target.value;
+    const verifyChangeHandlerData = (value) => {
+        const validationResult = dataValidation.commentValidation(value);
 
-        if (currentComment.length < 3) {
-            setErrors(state => ({ ...state, name: 'Comment should be at least 3 characters!' }))
-        } else if (currentComment.length > 300) {
-            setErrors(state => ({ ...state, name: 'Comment should be max 300 characters!' }))
+        if (validationResult) {
+            addInvalidDataNotification(validationResult);
+            setErrors('comment');
         } else {
-            setErrors(state => ({ ...state, name: false }))
-        }
+            setErrors('');
+        };
     };
+
+    const commentChangeHandler = debounce((e) =>
+        verifyChangeHandlerData(e.target.value)
+    );
 
     const addCommentPage = (
         <section id="create-comment-page" className="create">
-            <Alert variant="danger" show={errors.name}>{errors.name}</Alert>
-
             <form id="create-comment-form" onSubmit={onCommentCreate} method="POST">
                 <fieldset>
                     <legend>Add new Comment</legend>
@@ -70,6 +80,11 @@ const CreateComment = () => {
                                 id="create-comment-text"
                                 spellCheck="false"
                                 placeholder="Write comment ..."
+                                style={{
+                                    borderColor: errors == 'comment'
+                                        ? 'red'
+                                        : '#666'
+                                }}
                                 onChange={commentChangeHandler}
                             />
                         </span>
