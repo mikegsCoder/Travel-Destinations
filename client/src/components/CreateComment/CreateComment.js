@@ -1,4 +1,4 @@
-import './AddComment.css';
+import './CreateComment.css';
 
 import { useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
@@ -10,7 +10,7 @@ import { Alert } from 'react-bootstrap';
 import LoadingSpinner from '../Common/Spinner';
 // import useDestinationState from '../../hooks/useDestinationState';
 
-const Create = () => {
+const CreateComment = () => {
     const { user } = useAuthContext();
     const { addNotification } = useNotificationContext();
     const { destinationId } = useParams();
@@ -90,4 +90,4 @@ const Create = () => {
     );
 }
 
-export default Create;
+export default CreateComment;
