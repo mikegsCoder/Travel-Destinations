@@ -2,34 +2,32 @@ import './CommentList.css';
 
 import { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
+import * as commentService from '../../services/commentService';
+import * as constants from '../../constants/constants';
+import { useApplicationNotificationContext, types } from '../../contexts/ApplicationNotificationContext';
 import useDestinationState from '../../hooks/useDestinationState';
-import { useNotificationContext, types } from '../../contexts/NotificationContext';
-import * as destinationService from '../../services/destinationService';
 import LoadingSpinner from '../Common/Spinner';
 import CommentCard from './CommentCard';
 
 const CommentList = () => {
-    const pageSize = 3;
     const navigate = useNavigate();
     const [allComments, setAllComments] = useState([]);
     const [comments, setComments] = useState([]);
     const [pages, setPages] = useState(0);
     const [page, setPage] = useState(1);
-    // const { user } = useAuthContext();
-    let { destinationId } = useParams();
-    // let { destinationId, imageUrl } = useParams();
+    const { destinationId } = useParams();
     const [destination, setDestination] = useDestinationState(destinationId);
     const [isLoading, setIsLoading] = useState(false);
-    const { addNotification } = useNotificationContext();
+    const { addNotification } = useApplicationNotificationContext();
 
     useEffect(() => {
         setIsLoading(true);
 
-        destinationService.getDestinationComments(destinationId)
+        commentService.getDestinationComments(destinationId)
             .then(result => {
                 setAllComments(result);
-                setPages(Math.ceil(result.length / pageSize));
-                setComments(result.slice((page - 1) * pageSize, page * pageSize));
+                setPages(Math.ceil(result.length / constants.pageSize));
+                setComments(result.slice((page - 1) * constants.pageSize, page * constants.pageSize));
                 setIsLoading(false);
             })
             .catch(err => {
@@ -39,41 +37,30 @@ const CommentList = () => {
     }, []);
 
     useEffect(() => {
-        // destinationService.getCommentsPaginated(pageSize, page, destinationId)
-        //     .then(result => {
-        //         setComments(result);
-        //     })
-        //     .catch(err => {
-        //         console.log(err);
-        //     })
-
-        setComments(allComments.slice((page - 1) * pageSize, page * pageSize));
+        setComments(allComments.slice((page - 1) * constants.pageSize, page * constants.pageSize));
     }, [page]);
 
     const onPrevBtnClick = (e) => {
         e.preventDefault();
-
         setPage(page - 1);
-    }
+    };
 
     const onNextBtnClick = (e) => {
         e.preventDefault();
-
         setPage(page + 1);
-    }
+    };
 
-    const onImageClick = (e) =>{
+    const onImageClick = (e) => {
         e.preventDefault();
-
         navigate(`/details/${destinationId}`);
-    }
+    };
 
     const commentList = (
         <>
             <h4 className='all-comments-title'>All Comments: {destination.title}</h4>
 
-            <span className='comment-image-wrapper' onFocus={"opacity=1"}>
-                <img src={destination.imageUrl} alt={destination.title} onClick={onImageClick}/>
+            <span className='comment-image-wrapper' >
+                <img src={destination.imageUrl} alt={destination.title} onClick={onImageClick} />
             </span>
 
             <ul className="comments-list">

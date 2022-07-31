@@ -1,47 +1,42 @@
 import './CommentCard.css';
 
-import { useParams, useNavigate, Link } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useState } from 'react';
 
+import * as commentService from '../../../services/commentService';
+import * as constants from '../../../constants/constants';
 import { useAuthContext } from '../../../contexts/AuthContext';
-import { useNotificationContext, types } from '../../../contexts/NotificationContext';
-// import useDestinationState from '../../../hooks/useDestinationState';
-
-import * as destinationService from '../../../services/destinationService';
-
-import ConfirmDialog from '../../Common/ConfirmDialog';
-
+import { useApplicationNotificationContext, types } from '../../../contexts/ApplicationNotificationContext';
+import ConfirmDeleteDialog from '../../Common/ConfirmDeleteDialog';
 
 const DestinationCard = ({
-    // destination,
     comment
 }) => {
     const navigate = useNavigate();
     const { user } = useAuthContext();
-    const { addNotification } = useNotificationContext();
-    // const { commentId } = useParams();
-    // const [destination, setDestination] = useDestinationState(destinationId);
+    const { addNotification } = useApplicationNotificationContext();
     const [showDeleteDialog, setShowDeleteDialog] = useState(false);
 
     const editClickHandler = (e) => {
         e.preventDefault();
-
         navigate(`/edit-comment/${comment._id}`);
     }
 
     const deleteClickHandler = (e) => {
         e.preventDefault();
-
-        // let modalText='Are you sure you want to delete this comment?';
         setShowDeleteDialog(true);
     }
 
     const deleteHandler = (e) => {
         e.preventDefault();
 
-       destinationService.deleteComment(comment._id, user.accessToken)
+        commentService.deleteComment(comment._id)
             .then(() => {
+                addNotification(constants.appNotificationMessages.commentDeleteSuccess, types.success);
                 navigate(`/details/${comment.destinationId}`);
+            })
+            .catch(err => {
+                addNotification(err, types.danger);
             })
             .finally(() => {
                 setShowDeleteDialog(false);
@@ -57,8 +52,7 @@ const DestinationCard = ({
 
     return (
         <li >
-            <ConfirmDialog show={showDeleteDialog} onClose={() => setShowDeleteDialog(false)} onSave={deleteHandler} />
-
+            <ConfirmDeleteDialog show={showDeleteDialog} onClose={() => setShowDeleteDialog(false)} onSave={deleteHandler} />
             <div className='comment-card' >
                 <fieldset>
                     <legend>By: {comment.userEmail}</legend>
