@@ -1,33 +1,20 @@
-import { useState, useEffect, useMemo } from 'react';
-
-import * as destinationService from '../services/destinationService';
+import { useState, useEffect } from 'react';
+import * as commentService from '../services/commentService';
 
 const useCommentState = (commentId) => {
-    // console.log(destinationId);
-
     const [comment, setComment] = useState({});
 
-    const controller = useMemo(() => {
-        const controller = new AbortController();
-
-        return controller;
-    }, [])
-
     useEffect(() => {
-        destinationService.getCommentById(commentId, controller.signal)
+        commentService.getCommentById(commentId)
             .then(commentResult => {
                 setComment(commentResult);
-            })
-
-        return () => {
-            controller.abort();
-        }
-    }, [commentId, controller]);
+            });
+    }, [commentId]);
 
     return [
         comment,
         setComment
-    ]
+    ];
 };
 
 export default useCommentState;
