@@ -1,48 +1,42 @@
-export const request = async (method, url, data) => {
-    let result = null;
-
-    if (method == 'GET') {
-        result = fetch(url);
-    } else {
-        result = fetch(url, {
-            method,
-            headers: {
-                'content-type': 'application/json',
-                'X-Authorization': getToken()
-            },
-            body: JSON.stringify(data)
-        });
-    }
-    
-    return result.then(responseHandler);
-};
-
-async function responseHandler(res) {
-    let jsonData = await res.json();
-
-    if (res.ok) {
-        return Object.values(jsonData);
-    } else {
-        throw jsonData;
-    }
-};
-
-function getToken() {
+const request = async (method, url, data) => {
     try {
-        let userItem = localStorage.getItem('user');
+        const user = localStorage.getItem('user');
+        const auth = JSON.parse(user || '{}');
 
-        if (!userItem) {
-            throw {message: 'You must be authenticated'};
+        let headers = {};
+
+        if (auth.accessToken) {
+            headers['X-Authorization'] = auth.accessToken;
         }
 
-        let user = JSON.parse(userItem);
+        let buildRequest;
 
-        return user.accessToken;
-    } catch(err) {
-        console.log(err);
+        if (method === 'GET') {
+            buildRequest = fetch(url, { headers });
+        } else {
+            buildRequest = fetch(url, {
+                method,
+                headers: {
+                    ...headers,
+                    'content-type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            });
+        }
+        const response = await buildRequest;
+
+        // console.log(response);
+
+        const result = await response.json();
+
+        return result;
+    } catch (error) {
+        console.log(error);
     }
-}
+};
 
-export const get = request.bind(null, 'GET');
-export const put = request.bind(null, 'PUT');
-export const post = request.bind(null, 'POST');
+export const get = request.bind({}, 'GET');
+export const post = request.bind({}, 'POST');
+export const patch = request.bind({}, 'PATCH');
+export const put = request.bind({}, 'PUT');
+export const del = request.bind({}, 'DELETE');
