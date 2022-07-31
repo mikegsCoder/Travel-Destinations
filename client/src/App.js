@@ -25,6 +25,8 @@ import Footer from './components/Footer';
 import NotFound from './components/404';
 import Notification from './components/Common/Notification';
 
+import ApplicationNotification from './components/Common/ApplicationNotification';
+
 import PrivateRoute from './components/Common/PrivateRoute';
 import GuardedRoute from './components/Common/GuardedRoute';
 import ErrorBoundary from './components/Common/ErrorBoundary';
@@ -38,6 +40,7 @@ function App() {
                 <NotificationProvider>
                     <div className="App">
                         <Header />
+                        <ApplicationNotification />
 
                         <Notification />
                         <main id="site-content">

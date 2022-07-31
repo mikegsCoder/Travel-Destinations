@@ -1,0 +1,25 @@
+.notification {
+    position: absolute;
+    top: 13vh ;
+    right: 6vw ;
+    color: white;
+    opacity: 0.8;
+    border: 2px solid white !important;
+}
+
+.notification:hover{
+    opacity: 1;
+}
+
+div.toast-header > button{
+    background-color: white;
+}
+
+.toast-header{
+    background-color: black !important;
+    color: white !important;
+}
+
+.toast-body{
+    text-align: center;
+}
