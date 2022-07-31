@@ -1,41 +1,18 @@
-const baseUrl = 'http://localhost:3030';
+import * as constants from '../constants/constants';
+import * as request from './requester';
 
-export const login = async (email, password) => {
-    let res = await fetch(`${baseUrl}/users/login`, {
-        method: 'POST',
-        headers: {
-            'content-type': 'application/json'
-        },
-        body: JSON.stringify({ email, password })
-    });
+export const login = (email, password) => 
+    request.post(`${constants.baseUrl.auth}/users/login`, { email, password });
 
-    let jsonResult = await res.json();
-
-    if (res.ok) {
-        return jsonResult;
-    } else {
-        throw jsonResult.message;
-    }
-};
-
-export const register = (email, password) => {
-    return fetch(`${baseUrl}/users/register`, {
-        method: 'POST',
-        headers: {
-            'content-type': 'application/json'
-        },
-        body: JSON.stringify({ email, password })
-    })
-        .then(res => res.json()); 
-};
+export const register = (email, password) =>
+    request.post(`${constants.baseUrl.auth}/users/register`, {email, password});
 
 export const logout = (token) => {
-    return fetch(`${baseUrl}/users/logout`, {
-        // headers: {}
+    return request.post(`${constants.baseUrl.auth}/users/logout`, {
         headers: {
             'X-Authorization': token,
         }
-    })
+    });
 };
 
 export const getUser = () => {
@@ -45,5 +22,5 @@ export const getUser = () => {
 };
 
 export const isAuthenticated = () => {
-    return Boolean(getUser())
+    return Boolean(getUser());
 };
