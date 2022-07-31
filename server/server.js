@@ -1336,9 +1336,11 @@
             "b559bd24-5fb6-4a42-bc48-40c17dea649d": {
                 "_ownerId": "35c62d76-8152-4626-8712-eeb96381bea8",
                 "title": "Rila mountain",
-                "description": "Rila, Bulgarian Rila Mountain is the highest mountain range in Bulgaria and one of the highest ranges in Europe. A northwestern section of the Rhodope Mountains, it has an area of 1,015 square miles (2,629 square km) and extends for about 50 miles (80 km) between the Thracian Plain at central Bulgaria and the Struma River. It rises to 9,596 feet (2,925 metres) at Musala peak",
+                "description": "Rila, Bulgarian Rila Mountain is the highest mountain range in Bulgaria and one of the highest ranges in Europe. A northwestern section of the Rhodope Mountains, it has an area of 1,015 square miles (2,629 square km) and extends for about 50 miles (80 km) between the Thracian Plain at central Bulgaria and the Struma River. It rises to 9,596 feet (2,925 metres) at Musala peak.",
                 "imageUrl": "/images/destinations/rila.jpg",
                 "category": "Mountains",
+                "latitude": "42.199413",
+                "longitude": "23.320509",
                 "_createdOn": 1617797078108
             },
             "2949b54d-b163-4a00-b65c-41fb8b641561": {
@@ -1347,6 +1349,8 @@
                 "description": "Located in a neat little enclave flanked by smooth brick-red ridges, Bolata Beach is one of Northern Bulgaria’s best kept secrets. A near perfect semi-circle of sand, protected by breakwaters, this is a quite unique little cove, and one of very few beaches in the area. For incredible nature, birds of all kinds, and a laid back beach vibe, Bolata Beach is the place to be.",
                 "imageUrl": "/images/destinations/bolata.jpg",
                 "category": "Sea-and-ocean",
+                "latitude": "43.382459",
+                "longitude": "28.469814",
                 "_createdOn": 1617799443179
             },
             "f6f54fcd-0469-470b-8ffa-a33ae6c7a524": {
@@ -1355,6 +1359,8 @@
                 "description": "The Devetashka cave is an enormous picturesque cave with 2 galleries, 11 lakes and 14 springs. You can see beautiful stalactites and stalagmites, rivulets, majestic natural domes and arches and you can take amazing pictures.",
                 "imageUrl": "/images/destinations/devetashka-cave.jpg",
                 "category": "Caves",
+                "latitude": "43.232744",
+                "longitude": "24.886702",
                 "_createdOn": 1617799658349
             },
             "0e68a98c-3d56-4d3d-9d9f-256ae02a41b9": {
@@ -1363,6 +1369,8 @@
                 "description": "Zhrebchevo dam is the fourth largest in Bulgaria. It is built on the Tundzha River. It is on the territory of the towns of Nikolaevo and Gurkovo, Stara Zagora. The dam has many convenient places for fishing. The submerged church \"St. Ivan Rilski\" can be seen there.",
                 "imageUrl": "/images/destinations/zhrebchevo.jpg",
                 "category": "Lakes-and-rivers",
+                "latitude": "42.621831",
+                "longitude": "25.861923",
                 "_createdOn": 1617799822338
             },
             "2949b54d-b830-4a00-b65c-41fb8b786561": {
@@ -1371,6 +1379,8 @@
                 "description": "The town of Veliki Preslav is situated on Golyama Kamchia River, 30 km away from Pliska, the capital of the first Bulgarian Kingdom, 20 km away from Shumen, the district centre, and 25 km away from Targovishte. Veliki Preslav was established more than 1100 years ago as a town-fortress under the reign of Knyaz Boris I.",
                 "imageUrl": "/images/destinations/preslav.jpg",
                 "category": "Historical-places",
+                "latitude": "43.148511",
+                "longitude": "26.815274",
                 "_createdOn": 1617799443156
             },
             "2949b54d-b350-4a10-b65c-41fb8s786553": {
@@ -1379,6 +1389,8 @@
                 "description": "Natural phenomenon “Stone Forest” is better known with its Bulgarian name “Pobiti kamani” which could be translated as \"stones beaten into the ground\". Seven large and several separate small groups are located on the north and south from the Beloslav Lake. These are numerous limestone pillars as high as 10 m, hollow or solid cylinders, truncated cones and single rocks and cliffs.",
                 "imageUrl": "/images/destinations/rock-phenomenon.jpg",
                 "category": "Other",
+                "latitude": "43.225953",
+                "longitude": "27.706818",
                 "_createdOn": 1617799442456
             },
             "2949b27d-b350-4a10-f65c-44fb8s786553": {
@@ -1387,14 +1399,18 @@
                 "description": "\"The ships\" rock formation is a rocky area near Sinemorets. The origin of the name suggests that there were pirates in ancient Sinemorets. It is believed that in this place the pirates made a fire on the high rocks, imitating a lighthouse, and luring the merchant ships to break into the rocks.",
                 "imageUrl": "/images/destinations/rock-ships.jpg",
                 "category": "Sea-and-ocean",
+                "latitude": "42.063896",
+                "longitude": "27.986019",
                 "_createdOn": 1617799431456
             },
             "2849b51d-b830-4a20-b65c-41fb8b786243": {
                 "_ownerId": "35c62d76-8152-4626-8712-eeb96381bea8",
                 "title": "Pirin mountain",
-                "description": "PIRIN mountain is the second highest in Bulgaria after Rila mountain. It is situated in the southwest part of the country in a rather extended shape to the northwest and southeast between the rivers Struma and Mesta.",
+                "description": "Pirin mountain is the second highest in Bulgaria after Rila mountain. It is situated in the southwest part of the country in a rather extended shape to the northwest and southeast between the rivers Struma and Mesta.",
                 "imageUrl": "/images/destinations/pirin.jpg",
                 "category": "Mountains",
+                "latitude": "41.775013",
+                "longitude": "23.447684",
                 "_createdOn": 1617799444386
             }
         },
