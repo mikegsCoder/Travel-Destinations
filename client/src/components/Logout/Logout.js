@@ -1,26 +1,40 @@
 import { useNavigate } from 'react-router-dom';
 
+import { useEffect, useState } from 'react';
+
 import * as authService from '../../services/authService';
+import * as constants from '../../constants/constants';
 import { useAuthContext } from '../../contexts/AuthContext';
-import { useEffect } from 'react';
-import { useNotificationContext, types } from '../../contexts/NotificationContext';
+import { useApplicationNotificationContext, types } from '../../contexts/ApplicationNotificationContext';
+import LoadingSpinner from '../Common/Spinner';
 
 const Logout = () => {
     const navigate = useNavigate();
-    const { addNotification } = useNotificationContext();
+    const { addNotification } = useApplicationNotificationContext();
     const { user, logout } = useAuthContext();
+    const [isLoading, setIsLoading] = useState(false);
     
     useEffect(() => {
+        setIsLoading(true);
+
         authService.logout(user.accessToken)
             .then(() => {
                 logout();
-                addNotification('You are loged out', types.success);
-                
+                setIsLoading(false);
+                addNotification(constants.appNotificationMessages.logoutSuccess, types.success);
                 navigate('/home-page');
             })
+            .catch(err => {
+                setIsLoading(false);
+                addNotification(err, types.danger);
+            });
     }, [])
 
-    return null;
+    return (
+        <>
+            {isLoading ? <LoadingSpinner /> : null}
+        </>
+    );
 };
 
 export default Logout;
