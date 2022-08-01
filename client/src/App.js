@@ -24,7 +24,6 @@ import CommentList from './components/CommentList';
 import EditComment from './components/EditComment';
 import Footer from './components/Footer';
 import NotFound from './components/404';
-import Notification from './components/Common/Notification';
 
 import ApplicationNotification from './components/Common/ApplicationNotification';
 

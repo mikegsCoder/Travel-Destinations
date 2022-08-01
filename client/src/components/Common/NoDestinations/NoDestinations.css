@@ -1,0 +1,7 @@
+.no-destinations{
+    color: white;
+    position: absolute;
+    left: 50vw;
+    top: 45vh;
+    transform: translate(-50%);
+}
