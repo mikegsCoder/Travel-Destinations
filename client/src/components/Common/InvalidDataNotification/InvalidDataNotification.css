@@ -1,0 +1,22 @@
+@media screen and (min-height: 840px){
+    div.fade.alert.alert-danger{
+        top: 10vh;
+    }
+}
+
+@media screen and (max-height: 840px){
+    div.fade.alert.alert-danger{
+        top: 6.5vh;
+    }
+}
+
+div.fade.alert.alert-danger{
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%);
+    padding: 0.1rem 0.6rem;
+    font-size: 1.3rem;
+    font-weight: bold;
+    border: 2px solid red;
+    border-radius: 0.4rem;
+}
