@@ -3,12 +3,13 @@ import './RecentDestinations.css';
 import { useState, useEffect } from 'react';
 
 import * as destinationService from '../../services/destinationService';
-import { useNotificationContext, types } from '../../contexts/NotificationContext';
+import { useApplicationNotificationContext, types } from '../../contexts/ApplicationNotificationContext';
 import DestinationCarousel from '../Common/DestinationCarousel';
 import LoadingSpinner from '../Common/Spinner';
+import NoDestinations from '../Common/NoDestinations';
 
 const RecentDestinations = () => {
-    const { addNotification } = useNotificationContext();
+    const { addNotification } = useApplicationNotificationContext();
     const [destinations, setDestinations] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
 
@@ -27,10 +28,12 @@ const RecentDestinations = () => {
     }, []);
 
     const recentDestinations = (
-        <div className="recent-carousel" >
+        destinations.length > 0
+        ? <div className="recent-carousel" >
             <h4>Recent Destinations</h4>
             <DestinationCarousel destinations={destinations} />
         </div>
+        : <NoDestinations/>
     );
 
     return (
