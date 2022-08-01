@@ -1,30 +1,19 @@
 import './ByCategory.css';
 
-import React from 'react';
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 
 import * as destinationService from '../../services/destinationService';
-import { useNotificationContext, types } from '../../contexts/NotificationContext';
+import { useApplicationNotificationContext, types } from '../../contexts/ApplicationNotificationContext';
 import DestinationCarousel from '../Common/DestinationCarousel';
 import LoadingSpinner from '../Common/Spinner';
-
-const categories = [
-    { value: 'Mountains', text: 'Mountains' },
-    { value: 'Sea-and-ocean', text: 'Sea and ocean' },
-    { value: 'Caves', text: 'Caves' },
-    { value: 'Lakes-and-rivers', text: 'Lakes and rivers' },
-    { value: 'Historical-places', text: 'Historical places' },
-    { value: 'Other', text: 'Other' },
-]
+import NoDestinations from '../Common/NoDestinations';
 
 const MyDestinations = () => {
-    const { addNotification } = useNotificationContext();
+    const { addNotification } = useApplicationNotificationContext();
     const { category } = useParams();
     const [destinations, setDestinations] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
-
-    // console.log(category);
 
     useEffect(() => {
         setIsLoading(true);
@@ -40,13 +29,19 @@ const MyDestinations = () => {
             });
     }, [category]);
 
-    // console.log(destinations)
-
     const byCategory = (
-        <div className="my-destinatins-carousel" >
-            <h4>{categories.find(c => c.value == category).text}: {destinations.length}</h4>
+        destinations.length > 0
+        ? <div className="by-category-carousel" >
+            <h4>
+                {category.includes('-')
+                    ? ' ' + category.replaceAll("-", " ")
+                    : ' ' + category
+                }: 
+                {destinations.length}
+            </h4>
             <DestinationCarousel destinations={destinations} />
         </div>
+        : <NoDestinations/>
     );
 
     return (
