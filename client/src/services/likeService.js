@@ -9,3 +9,9 @@ export const getDestinationLikes = (destinationId) => {
     return request.get(`${constants.baseUrl.data}/likes?select=userId&where=${query}`)
         .then(res => res.map(x => x.userId));
 };
+
+export const getLikesByUseId = (userId) => {
+    const query = encodeURIComponent(`_ownerId="${userId}"`);
+
+    return request.get(`${constants.baseUrl.data}/likes?where=${query}&count`)
+};
