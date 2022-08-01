@@ -8,70 +8,33 @@ import { faLock } from '@fortawesome/free-solid-svg-icons';
 import { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 
-import { useAuthContext } from '../../contexts/AuthContext';
-import { useNotificationContext, types } from '../../contexts/NotificationContext';
-import LoadingSpinner from '../Common/Spinner';
 import * as authService from '../../services/authService';
-import { Alert } from 'react-bootstrap';
+import * as dataValidation from '../../services/userDataValidationService';
+import * as constants from '../../constants/constants';
+import { useAuthContext } from '../../contexts/AuthContext';
+import { useApplicationNotificationContext, types } from '../../contexts/ApplicationNotificationContext';
+import { useInvalidDataNotificationContext, debounce } from '../../contexts/InvalidDataNotificationContext';
+import LoadingSpinner from '../Common/Spinner';
 
 const Register = () => {
     const navigate = useNavigate();
-    const { addNotification } = useNotificationContext();
     const { login } = useAuthContext();
-    const [errors, setErrors] = useState({ name: false })
     const [isLoading, setIsLoading] = useState(false);
-    const emailRegexp = /^[A-Za-z0-9_.]+@[A-Za-z]+\.[A-Za-z]{2,3}$/;
+    const { addNotification } = useApplicationNotificationContext();
+    const { addInvalidDataNotification } = useInvalidDataNotificationContext();
+    const [errors, setErrors] = useState([]);
+    const [currentPassword, setCurrentPassword] = useState('');
 
     const registerSubmitHandler = (e) => {
         e.preventDefault();
 
         let { email, password, repass } = Object.fromEntries(new FormData(e.currentTarget));
 
-        let validationResult = '';
-
-        if (!email.match(emailRegexp)) {
-            validationResult += 'Invalid email';
-            document.getElementById('register-email').style.color = 'red';
-        }
-        else {
-            document.getElementById('register-email').style.color = 'skyblue';
-        }
-
-        if (password.length < 6 || password.length > 20) {
-            validationResult.length == 0
-                ? validationResult = 'Invalid password!'
-                : validationResult += ' and password!'
-            document.getElementById('register-password').style.color = 'red';
-        } else {
-            validationResult.length > 0
-                ? validationResult += '!'
-                : validationResult = '';
-            document.getElementById('register-password').style.color = 'skyblue';
-        }
-
-        if (password != repass) {
-            validationResult += ' Passwords don\'t match!';
-            document.getElementById('register-repass').style.color = 'red';
-        } else {
-            document.getElementById('register-repass').style.color = 'skyblue';
-        }
+        const { validationResult, invalidFields } = dataValidation.userDataValidation(email, password, repass);
+        setErrors(invalidFields);
 
         if (validationResult.length != 0) {
-
-            // async function invalidRegisterData () {
-            //     setErrors(state => ({ ...state, name: validationResult }));
-            //     await new Promise(resolve => setTimeout(resolve, 3000));
-            //     setErrors(state => ({ ...state, name: false }));
-            //   }
-
-            // invalidRegisterData();
-
-            (async () => {
-                setErrors(state => ({ ...state, name: validationResult }));
-                await new Promise(resolve => setTimeout(resolve, 3000));
-                setErrors(state => ({ ...state, name: false }));
-            })();
-
+            addInvalidDataNotification(validationResult);
             return;
         };
 
@@ -81,7 +44,7 @@ const Register = () => {
             .then(authData => {
                 login(authData);
                 setIsLoading(false);
-                addNotification('Your registration was successful', types.success);
+                addNotification(constants.appNotificationMessages.registerSuccess, types.success);
                 navigate('/home-page');
             })
             .catch(err => {
@@ -90,63 +53,47 @@ const Register = () => {
             });
     };
 
-    //-----------debounce-------------
-    function debounce(func, timeout = 300) {
-        let timer;
-        return (...args) => {
-            clearTimeout(timer);
-            timer = setTimeout(() => { func.apply(this, args); }, timeout);
+    const verifyChangeHandlerData = (name, value) => {
+        let validationResult = false;
+
+        switch (name) {
+            case 'email':
+                validationResult = dataValidation.emailValidation(value);
+                break;
+            case 'password':
+                validationResult = dataValidation.passwordValidation(value);
+                break;
+            case 'repass':
+                validationResult = dataValidation.repassValidation(value);
+                break;
+        };
+
+        if (validationResult) {
+            addInvalidDataNotification(validationResult);
+            setErrors(state => [...state, name]);
+        } else if (errors.includes(name)) {
+            setErrors(state => state.filter(x => x != name));
         };
     };
 
-    const emailChangeHandler = debounce((e) => emailValidation(e));
+    const emailChangeHandler = debounce((e) =>
+        verifyChangeHandlerData('email', e.target.value)
+    );
 
-    // const emailChangeHandler = (e) => {
-    const emailValidation = (e) => {
-        let currentEmail = e.target.value;
+    const passwordChangeHandler = debounce((e) => {
+        const currentPassword = e.target.value;
+        setCurrentPassword(currentPassword);
+        verifyChangeHandlerData('password', currentPassword);
+    });
 
-        if (currentEmail.length < 9) {
-            setErrors(state => ({ ...state, name: 'Email should be at least 9 characters!' }));
-        } else if (currentEmail.length > 30) {
-            setErrors(state => ({ ...state, name: 'Email should be max 30 characters!' }));
-        } else {
-            setErrors(state => ({ ...state, name: false }));
-        };
-    };
-
-    const passwordChangeHandler = debounce((e) => passwordValidation(e));
-
-    // const passwordChangeHandler = (e) => {
-    const passwordValidation = (e) => {
-        let currentPassword = e.target.value;
-
-        if (currentPassword.length < 6) {
-            setErrors(state => ({ ...state, name: 'Password should be at least 6 characters!' }));
-        } else if (currentPassword.length > 20) {
-            setErrors(state => ({ ...state, name: 'Password should be max 20 characters!' }));
-        } else {
-            setErrors(state => ({ ...state, name: false }));
-        };
-    };
-
-    const repassChangeHandler = debounce((e) => repassValidation(e));
-
-    const repassValidation = (e) => {
-        const currentPassword = document.getElementById("password").value;
-        let currentRepass = e.target.value;
-
-        if (currentRepass != currentPassword) {
-            setErrors(state => ({ ...state, name: 'Passwords don\'t match!' }));
-        } else {
-            setErrors(state => ({ ...state, name: false }));
-        };
-    };
+    const repassChangeHandler = debounce((e) => {
+        const currentRepass = e.target.value
+        verifyChangeHandlerData('repass', { currentPassword, currentRepass });
+    });
 
     const registerPage = (
         <>
-            <Alert variant="danger" show={errors.name}>{errors.name}</Alert>
             <div className="container-register">
-
                 <div className="form-box-register">
                     <div className="header-form">
                         <h4 className="text-primary text-center">
@@ -171,10 +118,16 @@ const Register = () => {
                                 </div>
                                 <input
                                     type="email"
-                                    className="form-control-2"
+                                    className="form-control-register"
                                     name="email"
                                     placeholder="Enter email"
                                     spellCheck='false'
+                                    style={{
+                                        borderColor: errors.includes('email')
+                                            ? 'red'
+                                            : '#666'
+                                    }}
+                                    required
                                     onChange={emailChangeHandler}
                                 />
                             </div>
@@ -190,11 +143,16 @@ const Register = () => {
                                 </div>
                                 <input
                                     type="password"
-                                    className="form-control-2"
+                                    className="form-control-register"
                                     name="password"
-                                    id="password"
                                     spellCheck='false'
                                     placeholder="Enter password"
+                                    style={{
+                                        borderColor: errors.includes('password')
+                                            ? 'red'
+                                            : '#666'
+                                    }}
+                                    required
                                     onChange={passwordChangeHandler}
                                 />
                             </div>
@@ -210,10 +168,16 @@ const Register = () => {
                                 </div>
                                 <input
                                     type="password"
-                                    className="form-control-2"
+                                    className="form-control-register"
                                     name="repass"
                                     spellCheck='false'
                                     placeholder="Repeat password"
+                                    style={{
+                                        borderColor: errors.includes('repass')
+                                            ? 'red'
+                                            : '#666'
+                                    }}
+                                    required
                                     onChange={repassChangeHandler}
                                 />
                             </div>
@@ -222,7 +186,7 @@ const Register = () => {
                                 <div>
                                     <p>
                                         Allready have an account?
-                                        <Link to="/login">Sign in</Link>
+                                        <Link to="/login"> Sign in</Link>
                                     </p>
                                 </div>
                             </div>
