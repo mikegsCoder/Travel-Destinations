@@ -1,7 +1,7 @@
 # Travel Destinations
 
-:dart:  My project for the ReactJS course at SoftUni. (June 2022) 
-Uploaded in Firebase 👉 [Travel Destinations](https://travel-destinations-88814.firebaseapp.com/)
+:dart:  My project for the ReactJS course at SoftUni (June 2022) 
+uploaded in Firebase 👉 [Travel Destinations](https://travel-destinations-88814.firebaseapp.com/)
 
 ## :information_source: How It Works
 
