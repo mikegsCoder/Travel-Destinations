@@ -5,39 +5,35 @@ import { useParams, useNavigate, Link } from 'react-router-dom';
 
 import * as destinationService from '../../services/destinationService';
 import * as likeService from '../../services/likeService';
+import * as constants from '../../constants/constants';
 import { useAuthContext } from '../../contexts/AuthContext';
-import { useNotificationContext, types } from '../../contexts/NotificationContext';
+import { useApplicationNotificationContext, types } from '../../contexts/ApplicationNotificationContext';
+import useCommentsCountState from '../../hooks/useCommentsCountState';
 import useDestinationState from '../../hooks/useDestinationState';
-import useCommentsState from '../../hooks/useCommentsState';
 import useLikesState from '../../hooks/useLikesState';
-import ConfirmDialog from '../Common/ConfirmDialog';
+import ConfirmDeleteDialog from '../Common/ConfirmDeleteDialog';
 import LoadingSpinner from '../Common/Spinner';
 
 const Details = () => {
     const navigate = useNavigate();
     const { user } = useAuthContext();
-    const { addNotification } = useNotificationContext();
+    const { addNotification } = useApplicationNotificationContext();
     const { destinationId } = useParams();
     const [destination, setDestination] = useDestinationState(destinationId);
-    const [comments, setComments] = useCommentsState(destinationId);
     const [likes, setLikes] = useLikesState(destinationId);
     const [showDeleteDialog, setShowDeleteDialog] = useState(false);
-    // const [isDataLoading, setIsDataLoading] = useState(false);
-    // const [isCommentsLoading, setIsCommentsLoading] = useState(false);
-    // const [isLikesLoading, setIsLikesLoading] = useState(false);
     const [isDeleteLoading, setIsDeleteLoading] = useState(false);
-
-    // console.log(destinationId);
+    const [commentsCount, setCommentsCount] = useCommentsCountState(destinationId);
 
     const deleteHandler = (e) => {
         e.preventDefault();
 
         setIsDeleteLoading(true);
 
-        destinationService.deleteDestination(destinationId, user.accessToken)
+        destinationService.deleteDestination(destinationId)
             .then(() => {
                 setIsDeleteLoading(false);
-                addNotification('Destination successfully deleted.', types.success);
+                addNotification(constants.appNotificationMessages.destinationDeleteSuccess, types.success);
                 navigate('/home-page');
             })
             .catch(err => {
@@ -52,69 +48,48 @@ const Details = () => {
 
     const editClickHandler = (e) => {
         e.preventDefault();
-
-        // console.log(destinationId);
         navigate(`/edit/${destinationId}`);
     };
 
     const deleteClickHandler = (e) => {
         e.preventDefault();
-
-        // console.log(process.env.NODE_ENV);
         setShowDeleteDialog(true);
     };
 
     const viewCommentsClickHandler = (e) => {
         e.preventDefault();
-
         navigate(`/comments/${destinationId}`);
     };
 
     const addCommentClickHandler = (e) => {
         e.preventDefault();
-
-        navigate(`/add-comment/${destinationId}`)
+        navigate(`/add-comment/${destinationId}`);
     };
 
     const likeButtonClick = () => {
-        // if (user._id === destination._ownerId) {
-        //     return;
-        // }
-
-        // if (destination.likes.includes(user._id)) {
-        //     addNotification('You cannot like again')
-        //     return;
-        // }
-
         likeService.like(user._id, destinationId)
             .then(() => {
-                // setDestination(state => ({ ...state, likes: [...state.likes, user._id] }));
                 likeService.getDestinationLikes(destinationId)
                     .then(likesResult => {
                         setLikes(likesResult);
-                    })
-
-                addNotification(`Successfuly liked ${destination.title}`, types.success);
+                    });
+                addNotification(constants.appNotificationMessages.destinationLikeSuccess + destination.title + '.', types.success);
             });
     };
-    
-    // const userButtons = (!destination.likes?.includes(user._id)
-    //     ? <button className="btn-secondary btn-block"
-    //         id="like-btn"
-    //         onClick={likeButtonClick}>
-    //         Like
-    //     </button>
-    //     : null
-    // )
+
+    const mapClickHandler = (e) => {
+        e.preventDefault();
+        navigate(`/map/${destinationId}`);
+    }
 
     const userButtons = (
         user._id && !Array.from(likes)?.includes(user._id)
-        ? <button className="btn-secondary btn-block"
+            ? <button className="btn-secondary btn-block"
                 id="like-btn"
                 onClick={likeButtonClick}>
                 Like
             </button>
-        : null
+            : null
     )
 
     const ownerButtons = (
@@ -145,21 +120,25 @@ const Details = () => {
 
     const detailsPage = (
         <>
-            <ConfirmDialog show={showDeleteDialog} onClose={() => setShowDeleteDialog(false)} onSave={deleteHandler} />
+            <ConfirmDeleteDialog show={showDeleteDialog} onClose={() => setShowDeleteDialog(false)} onSave={deleteHandler} />
 
             <section id="details-page" className="details">
                 <article id="details-article" className='article-details'>
                     <div className="details-information">
-                        <h4>Title: {destination.title}</h4>
-                        <p className="category">
-                            Category: 
-                            {
-                                destination.category?.includes('-')
-                                    ? ' ' + destination.category.replaceAll("-", " ")
-                                    : ' ' + destination.category
-                            }
-                        </p>
-                        <p className="img"><img src={destination.imageUrl} /></p>
+                        <div className='details-heading-wrapper'>
+                            <h4>Title: {destination.title}</h4>
+                            <p className="category">
+                                Category:
+                                {
+                                    destination.category?.includes('-')
+                                        ? ' ' + destination.category.replaceAll("-", " ")
+                                        : ' ' + destination.category
+                                }
+                            </p>
+                        </div>
+                        <div className="img">
+                            <img src={destination.imageUrl} />
+                        </div>
                         <div className="actions">
                             {user._id && (user._id == destination._ownerId)
                                 ? ownerButtons
@@ -168,14 +147,18 @@ const Details = () => {
                             <div className="likes">
                                 <img className="hearts" src="/images/common/heart.gif" />
                                 <div id="total-likes">
-                                    {/* Likes: {destination.likes?.length || 0} */}
                                     Likes: {likes?.length}
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div className="destination-description">
-                        <h4>Description:</h4>
+                        <div className='description-wrapper'>
+                            <h4>Description:</h4>
+                            <div className='map-btn-wrapper'>
+                                <img src="/images/common/map-btn.png" alt="map-btn" onClick={mapClickHandler} />
+                            </div>
+                        </div>
                         <textarea
                             disabled={true}
                             spellCheck={false}
@@ -186,8 +169,7 @@ const Details = () => {
                                 ? addCommentBtn
                                 : null
                             }
-                            {/* {destination.comments?.length > 0 */}
-                            {comments?.length > 0
+                            {commentsCount > 0
                                 ? <button
                                     className="btn-secondary btn-block"
                                     id="view-comments-btn"
@@ -197,8 +179,7 @@ const Details = () => {
                                 : null
                             }
                             <span id="total-comments">
-                                {/* Comments : {destination.comments?.length || 0} */}
-                                Comments : {comments?.length || 0}
+                                Comments: {commentsCount || 0}
                             </span>
                         </div>
                     </div>
