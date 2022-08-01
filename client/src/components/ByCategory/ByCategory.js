@@ -6,7 +6,7 @@ import { useParams } from 'react-router-dom';
 
 import * as destinationService from '../../services/destinationService';
 import { useNotificationContext, types } from '../../contexts/NotificationContext';
-import DestinationCarousel from '../DestinationCarousel';
+import DestinationCarousel from '../Common/DestinationCarousel';
 import LoadingSpinner from '../Common/Spinner';
 
 const categories = [

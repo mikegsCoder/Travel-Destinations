@@ -5,7 +5,7 @@ import { Routes, Route } from 'react-router-dom';
 
 import { AuthProvider } from './contexts/AuthContext';
 import { ApplicationNotificationProvider } from './contexts/ApplicationNotificationContext';
-import { NotificationProvider } from './contexts/NotificationContext'
+import { InvalidDataNotificationProvider } from './contexts/InvalidDataNotificationContext';
 
 import Header from './components/Header';
 import HomePage from './components/HomePage';
@@ -39,7 +39,7 @@ function App() {
 
             <AuthProvider>
                 <ApplicationNotificationProvider>
-                    <NotificationProvider>
+                    <InvalidDataNotificationProvider>
                         <div className="App">
                             <Header />
                             <ApplicationNotification />
@@ -75,7 +75,7 @@ function App() {
 
                             <Footer />
                         </div>
-                    </NotificationProvider>
+                    </InvalidDataNotificationProvider>
                 </ApplicationNotificationProvider>
             </AuthProvider>
         </ErrorBoundary>

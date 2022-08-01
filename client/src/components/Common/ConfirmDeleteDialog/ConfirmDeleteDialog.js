@@ -1,12 +1,11 @@
-import { Modal, Button } from 'react-bootstrap';
-import './ConfirmDialog.css';
+import './ConfirmDeleteDialog.css';
 
-const ConfirmDialog = ({
+import { Modal, Button } from 'react-bootstrap';
+
+const ConfirmDeleteDialog = ({
     show,
     onClose,
     onSave,
-    // modalTitle,
-    // modalText
 }) => {
     return (
         <Modal show={show} onHide={onClose}>
@@ -16,8 +15,6 @@ const ConfirmDialog = ({
 
             <Modal.Body>
                 <p>Are you sure that you want to delete this item?</p>
-                {/* <p>Modal body text goes here.</p> */}
-                {/* <p>{modalText}</p> */}
             </Modal.Body>
 
             <Modal.Footer>
@@ -28,4 +25,4 @@ const ConfirmDialog = ({
     );
 };
 
-export default ConfirmDialog;
+export default ConfirmDeleteDialog;

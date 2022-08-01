@@ -1,15 +1,15 @@
 import './AllDestinations.css';
 
-import React from 'react';
 import { useState, useEffect } from 'react';
 
 import * as destinationService from '../../services/destinationService';
-import { useNotificationContext, types } from '../../contexts/NotificationContext';
-import DestinationCarousel from '../DestinationCarousel';
+import { useApplicationNotificationContext, types } from '../../contexts/ApplicationNotificationContext';
+import DestinationCarousel from '../Common/DestinationCarousel';
 import LoadingSpinner from '../Common/Spinner';
+import NoDestinations from '../Common/NoDestinations';
 
 const AllDestinations = () => {
-    const { addNotification } = useNotificationContext();
+    const { addNotification } = useApplicationNotificationContext();
     const [destinations, setDestinations] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
 
@@ -28,10 +28,12 @@ const AllDestinations = () => {
     }, []);
 
     const allDestinations = (
-        <div className="home-carousel" >
+        destinations.length > 0
+        ?<div className="home-carousel" >
             <h4>All Destinations: {destinations.length}</h4>
             <DestinationCarousel destinations={destinations} />
         </div>
+        : <NoDestinations/>
     );
 
     return (

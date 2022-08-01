@@ -5,7 +5,7 @@ import { useState, useEffect } from 'react';
 
 import * as destinationService from '../../services/destinationService';
 import { useAuthContext } from '../../contexts/AuthContext';
-import DestinationCarousel from '../DestinationCarousel';
+import DestinationCarousel from '../Common/DestinationCarousel';
 import LoadingSpinner from '../Common/Spinner';
 import { useNotificationContext, types } from '../../contexts/NotificationContext';
 
