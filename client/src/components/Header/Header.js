@@ -1,22 +1,20 @@
 import './Header.css';
 
-import { Link } from 'react-router-dom';
-
+import { useNavigate, Link } from 'react-router-dom';
 import { useAuthContext } from '../../contexts/AuthContext';
-import { useParams, useNavigate } from 'react-router-dom';
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faHouseChimney } from '@fortawesome/free-solid-svg-icons'
-// import { faEnvelope } from '@fortawesome/free-solid-svg-icons'
-// import { faGithubSquare } from '@fortawesome/free-brands-svg-icons'
-// import { faFacebookSquare } from '@fortawesome/free-brands-svg-icons'
-// import { faTwitterSquare } from '@fortawesome/free-brands-svg-icons'
-
+// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+// import { faHouseChimney } from '@fortawesome/free-solid-svg-icons'
 
 const Header = () => {
     const navigate = useNavigate();
 
     const { user } = useAuthContext();
+
+    const emailClickHandler = (e) => {
+        e.preventDefault();
+        navigate('/profile');
+    }
 
     const guestNavigation = (
         <>
@@ -27,8 +25,22 @@ const Header = () => {
 
     const userRightNavigation = (
         <>
-            <li><p className="user-email">Welcome: {user.email}</p></li>
-            <li><Link to="/logout">Logout</Link></li>
+            <li>
+                <p className="user-email">
+                    Welcome: 
+                    <span
+                        className="header-user-email"
+                        onClick={emailClickHandler}
+                    >
+                        {' ' + user.email}
+                    </span>
+                </p>
+            </li>
+            <li>
+                <Link to="/logout" className='logout-btn'>
+                    <img src="/images/common/logout.jpg" alt="logout" />
+                </Link>
+            </li>
         </>
     );
 
@@ -42,8 +54,6 @@ const Header = () => {
     const onCategorySelect = (e) => {
         e.preventDefault();
 
-        // console.log("in select Handler");
-        // console.log(e.currentTarget.value);
         let category = e.currentTarget.value;
 
         e.currentTarget.value = "Select";
@@ -58,7 +68,6 @@ const Header = () => {
     return (
         <div className='navbar'>
             <ul className='navbar-left' id='left-nav'>
-                {/* <li><Link to="/home-page"><FontAwesomeIcon icon={faHouseChimney} className="font-awesome-icon-home" /></Link></li> */}
                 <li>
                     <Link to="/home-page" className='globe-rotating'>
                         <img src="/images/common/globe.gif" alt="globe" />
@@ -68,7 +77,6 @@ const Header = () => {
                 <li><Link to="/recent">Recent Destinations</Link></li>
                 <li>
                     <p className="field" id="search-by-category">
-                        {/* <label htmlFor="category">Category</label> */}
                         <span className="input">
                             <select id="search-category" name="category" defaultValue={"Select"} onChange={onCategorySelect}>
                                 <option value="Select">SELECT CATEGORY</option>

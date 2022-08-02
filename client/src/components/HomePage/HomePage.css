@@ -1,43 +1,46 @@
-/* #pageintro{padding:6.5% 0 0 0;} */
-#pageintro {
+@media only screen and (min-width: 520px) {
+    .homepage-text{
+        margin-top: 55vh;
+    }
+}
+
+@media only screen and (max-width: 550px)  {
+    .homepage-text{
+        margin-top: 40vh;
+    }
+}
+
+@media only screen and (max-height: 660px) {
+
+    .homepage-text{
+        margin-top: 50vh;
+    }
+}
+
+@media only screen and (max-height: 600px) {
+
+    .homepage-text{
+        margin-top: 40vh;
+    }
+}
+
+.homepage-text{
     font-family: Verdana, Geneva, Tahoma, sans-serif;
-    margin: 30vh 0 0 10%;
+    color: white;
+    text-shadow: 3px 3px 3px black;
+    margin-left: 10vw;
 }
 
-#pageintro article {
-    padding-top: 20vh;
-    display: block;
-    max-width: 60%;
+.homepage-title{
+    font-size: 70px;
+    font-weight: 500;
 }
 
-#pageintro .heading {
-    margin-top: 4%;
-    margin-bottom: 5vh;
-    font-size: 2.3rem;
+.homepage-heading{
+    font-size: 50px;
 }
 
-#pageintro p:first-of-type {
-    margin: 0 0 2% 0;
-    text-transform: uppercase;
-    font-size: 1.5rem;
-    letter-spacing: 5px;
-}
-
-#pageintro footer {
-    margin-top: 50px;
-}
-
-#pageintro {
-    color: #FFFFFF;
-    width: 85%
-}
-
-/* ------------------------------------------------- */
-#dashboard-background {
-    width: 100%;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    /* min-height: 100vh; */
-    padding: 0;
+.homepage-description{
+    font-size: 22px;
+    font-style: italic;
 }

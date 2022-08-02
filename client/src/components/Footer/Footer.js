@@ -1,14 +1,21 @@
 import './Footer.css';
 
-// import { Link } from 'react-router-dom';
-
 const Footer = () => {
 
     return (
         <div className="site-footer">
-            {/* <p className="footer-left">Copyright &copy; 2022 - <a href="https://mikegscoder.github.io/">mikegsCoder</a></p> */}
-            <p className="footer-left">Travel Destinations v_1.3 &copy; 2022 - <a href="https://mikegscoder.github.io/">mikegsCoder</a></p>
-            <p className="footer-right">React Course Project @  <a href="https://softuni.bg/">SoftUni</a></p>
+            <p className="footer-left">
+                Travel Destinations v_1.6 &copy; 2022 - {' '}
+                <a href="https://github.com/mikegsCoder/Travel-Destinations" target="_blank">
+                    mikegsCoder
+                </a>
+            </p>
+            <p className="footer-right">
+                React Course Project @ {' '}
+                <a href="https://softuni.bg/" target="_blank">
+                    SoftUni
+                </a>
+            </p>
         </div>
     );
 }

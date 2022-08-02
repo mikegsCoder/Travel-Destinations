@@ -23,7 +23,7 @@
     justify-content: space-between;
     padding: 0.2rem 3rem;
     color: #AAAAAA;
-    background-color: #060435;
+    background-color: black;
     position: absolute;
     left: 0;
     right: 0;
@@ -37,7 +37,7 @@
 
 .site-footer a{
     color: #AAAAAA;
-    background-color: #060435;
+    background-color: black;
     text-decoration: underline;
 }
 
