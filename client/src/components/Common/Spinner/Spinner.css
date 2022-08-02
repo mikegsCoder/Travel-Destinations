@@ -10,10 +10,10 @@
 
 .spinner-text{
     opacity: 0.6;
-    font-size: 1.3rem;
+    font-size: 23px !important;
     font-weight: bold;
     position: absolute;
-    left: calc(50vw - 66px);
+    left: calc(50vw - 55px);
     top: calc(37vh + 30px);
     color: white;
 }

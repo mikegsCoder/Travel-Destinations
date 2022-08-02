@@ -1,3 +1,31 @@
+@media screen and (min-height: 970px){
+    .carousel-control-prev,
+    .carousel-control-next{
+        height: 85vh;
+    }
+}
+
+@media screen and (max-height: 970px){
+    .carousel-control-prev,
+    .carousel-control-next{
+        height: 78vh;
+    }
+}
+
+@media screen and (max-height: 780px){
+    .carousel-control-prev,
+    .carousel-control-next{
+        height: 80vh !important;
+    }
+}
+
+@media screen and (max-height: 680px){
+    .carousel-control-prev,
+    .carousel-control-next{
+        height: 75vh !important;
+    }
+}
+
 .carousel-inner {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     height: 88vh;
@@ -25,4 +53,8 @@
 .card-img img{
     border: 2px solid white;
     border-radius: 0.3rem;
+}
+
+.card-img img:hover{
+    cursor: pointer;
 }

@@ -6,7 +6,7 @@ const PrivateRoute = ({
 }) => {
     const { user } = useAuthContext();
 
-    return user.email ? children : <Navigate to="/login" />
+    return user.email ? children : <Navigate to="/login" replace/> // add replace!
 };
 
 export default PrivateRoute;
