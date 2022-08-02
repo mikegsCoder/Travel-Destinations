@@ -6,38 +6,34 @@ import * as commentService from '../../services/commentService';
 import * as constants from '../../constants/constants';
 import { useApplicationNotificationContext, types } from '../../contexts/ApplicationNotificationContext';
 import useDestinationState from '../../hooks/useDestinationState';
+import useCommentsCountState from '../../hooks/useCommentsCountState';
 import LoadingSpinner from '../Common/Spinner';
 import CommentCard from './CommentCard';
 
 const CommentList = () => {
     const navigate = useNavigate();
-    const [allComments, setAllComments] = useState([]);
-    const [comments, setComments] = useState([]);
-    const [pages, setPages] = useState(0);
-    const [page, setPage] = useState(1);
     const { destinationId } = useParams();
+    const [comments, setComments] = useState([]);
+    const [commentsCount, setCommentsCount] = useCommentsCountState(destinationId);
+    const [page, setPage] = useState(1);
     const [destination, setDestination] = useDestinationState(destinationId);
     const [isLoading, setIsLoading] = useState(false);
     const { addNotification } = useApplicationNotificationContext();
+    const pages = Math.ceil(commentsCount / constants.pageSize);
 
     useEffect(() => {
         setIsLoading(true);
 
-        commentService.getDestinationComments(destinationId)
+        commentService.getCommentsPaginated(constants.pageSize, page, destinationId)
             .then(result => {
-                setAllComments(result);
-                setPages(Math.ceil(result.length / constants.pageSize));
-                setComments(result.slice((page - 1) * constants.pageSize, page * constants.pageSize));
+                setComments(result);
                 setIsLoading(false);
             })
             .catch(err => {
                 addNotification(err, types.danger);
                 setIsLoading(false);
             });
-    }, []);
 
-    useEffect(() => {
-        setComments(allComments.slice((page - 1) * constants.pageSize, page * constants.pageSize));
     }, [page]);
 
     const onPrevBtnClick = (e) => {
