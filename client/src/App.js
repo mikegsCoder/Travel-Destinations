@@ -1,5 +1,6 @@
-// import logo from './logo.svg';
 //import './App.css';
+
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 import { Routes, Route } from 'react-router-dom';
 
@@ -24,26 +25,26 @@ import CommentList from './components/CommentList';
 import EditComment from './components/EditComment';
 import Footer from './components/Footer';
 import NotFound from './components/404';
+import MapComponent from './components/MapComponent';
+import ProfileStatistics from './components/ProfileStatistics';
 
 import ApplicationNotification from './components/Common/ApplicationNotification';
+import InvalidDataNotification from './components/Common/InvalidDataNotification';
 
+import ErrorBoundary from './components/Common/ErrorBoundary';
 import PrivateRoute from './components/Common/PrivateRoute';
 import GuardedRoute from './components/Common/GuardedRoute';
-import ErrorBoundary from './components/Common/ErrorBoundary';
 
 function App() {
-
     return (
         <ErrorBoundary>
-
             <AuthProvider>
                 <ApplicationNotificationProvider>
                     <InvalidDataNotificationProvider>
                         <div className="App">
                             <Header />
                             <ApplicationNotification />
-
-                            <Notification />
+                            <InvalidDataNotification />
                             <main id="site-content">
                                 <Routes>
 
@@ -56,12 +57,14 @@ function App() {
                                     <Route path="/by-category/:category" element={<ByCategory />} />
                                     <Route path="/details/:destinationId" element={<Details />} />
                                     <Route path="/comments/:destinationId" element={<CommentList />} />
+                                    <Route path="/map/:destinationId" element={<MapComponent />} />
 
                                     <Route path="/edit/:destinationId" element={<PrivateRoute><EditDestination /></PrivateRoute>} />
                                     <Route path="/edit-comment/:commentId" element={<PrivateRoute><EditComment /></PrivateRoute>} />
 
                                     <Route element={<GuardedRoute />} >
                                         <Route path="/logout" element={<Logout />} />
+                                        <Route path="/profile" element={<ProfileStatistics />} />
                                         <Route path="/my-destinations" element={<MyDestinations />} />
                                         <Route path="/create" element={<CreateDestination />} />
                                         <Route path="/add-comment/:destinationId" element={<CreateComment />} />
