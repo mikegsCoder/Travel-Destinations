@@ -1,7 +1,6 @@
 # Travel Destinations
 
-:dart:  My project for the ReactJS course at SoftUni (June 2022) 
-uploaded in Firebase 👉 [Travel Destinations](https://travel-destinations-88814.firebaseapp.com/)
+:dart:  My project for the [ReactJS](https://softuni.bg/trainings/3727/reactjs-june-2022) course at SoftUni (June 2022) deployed on Firebase 👉 [Travel Destinations](https://travel-destinations-88814.firebaseapp.com/)
 
 ## :information_source: How It Works
 
@@ -10,9 +9,9 @@ uploaded in Firebase 👉 [Travel Destinations](https://travel-destinations-8881
   - browse recent destinations;
   - browse destinations by category;
   - view destination details;
-  - view comments for the destination (paginated);
+  - view comments for the destination;
   - view destination geolocation. 
-- Logged Users:
+- Logged in users:
   - browse his own destinations; 
   - create new destinations;
   - edit his own destinations;
@@ -21,8 +20,18 @@ uploaded in Firebase 👉 [Travel Destinations](https://travel-destinations-8881
   - edit his own comments;
   - delete his own comment;
   - view profile statistics by clicking on his email on the header.  
+- Built in users:
+  - email: peter@abv.bg with password: 123456
+  - email: john@abv.bg with password: 123456
+- Some more features:
+  - implemented Error Boundary;
+  - implemented Private and Guarded routes;
+  - implemented Carousel with React Bootstrap;
+  - implemented geolocations with React Leaflet;
+  - implemented data validation for Register, Create Destination, Edit Destination, Create Comment and Edit Comment forms;
+  - implemented notification providers.
 
-## :hammer_and_pick: Built With
+## :hammer_and_wrench: Built With
 
 - ReactJS
 - React Router 6
@@ -34,9 +43,9 @@ uploaded in Firebase 👉 [Travel Destinations](https://travel-destinations-8881
 
 ## :gear: Application Backend
 
- - SoftUni practice server populated with data for Travel Destinations application.
- - Developed by [Viktor Kostadinov](https://github.com/softuni-practice-server/softuni-practice-server)
- - Uploaded in Heroku [Admin Panel](http://travel-destinations-server.herokuapp.com/admin/)
+ - [SoftUni practice server](https://github.com/softuni-practice-server/softuni-practice-server) populated with data for Travel Destinations application.
+ - Developed by [Viktor Kostadinov](https://github.com/viktorpts)
+ - Deployed on Heroku [Admin Panel](http://travel-destinations-server.herokuapp.com/admin/)
 
 ## :framed_picture: Screenshot - Destination Carousel
 
