@@ -1,17 +1,18 @@
 import './MyDestinations.css';
 
-import React from 'react';
+// import React from 'react';
 import { useState, useEffect } from 'react';
 
 import * as destinationService from '../../services/destinationService';
 import { useAuthContext } from '../../contexts/AuthContext';
+import { useApplicationNotificationContext, types } from '../../contexts/ApplicationNotificationContext';
 import DestinationCarousel from '../Common/DestinationCarousel';
 import LoadingSpinner from '../Common/Spinner';
-import { useNotificationContext, types } from '../../contexts/NotificationContext';
+import NoDestinations from '../Common/NoDestinations';
 
 const MyDestinations = () => {
     const { user } = useAuthContext();
-    const { addNotification } = useNotificationContext();
+    const { addNotification } = useApplicationNotificationContext();
     const [destinations, setDestinations] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
 
@@ -30,10 +31,12 @@ const MyDestinations = () => {
     }, []);
 
     const myDestinations = (
-        <div className="my-destinatins-carousel" >
+        destinations.length > 0
+        ? <div className="my-destinatins-carousel" >
             <h4>My Destinations: {destinations.length}</h4>
             <DestinationCarousel destinations={destinations} />
         </div>
+        : <NoDestinations/>
     );
 
     return (
