@@ -2,7 +2,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 75vh;
+    height: 90vh;
     width: 100%;
     color: white;
 }
@@ -26,17 +26,19 @@
     border: 2px solid white !important;
 }
 
-#create-btn {
+#create-btn,
+#cancel-create-destination-btn {
     position: relative;
-    width: 100%;
+    width: 50%;
     font-size: 1rem;
-    padding: 0.6rem 1rem;
+    padding: 0.3rem 1rem;
     border: 2px solid;
     border-radius: 0.4rem;
     margin-top: 5px;
 }
 
-#create-btn:hover {
+#create-btn:hover,
+#cancel-create-destination-btn:hover {
     cursor: pointer;
     border: 2px solid rgb(83, 143, 167);
     background-color: rgb(167, 167, 167);
@@ -96,7 +98,6 @@
 }
 
 #create-form fieldset {
-    /* padding: 1em 2em 2em 2em; */
     padding: 1em 1em 0.7em 1em;
     position: relative;
 }
@@ -115,7 +116,8 @@
 
 #create-form textarea {
     border-radius: 0.5rem;
-    padding: 0.8rem;
+    padding: 0.4rem;
+    height: 120px;
 }
 
 .description {
@@ -123,4 +125,48 @@
     height: 10vh;
     padding: 2rem;
     overflow: auto;
+}
+
+.location{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.location label{
+    width: 100px !important;
+    margin-right: 0.6rem;
+}
+
+#latitude,
+#longitude{
+    width: 120px !important;
+    text-indent: 0.3rem;
+    /* max-lines: 8; */
+    /* max */
+}
+
+#lattitude{
+    margin-right: 2.1rem;
+}
+
+.geo-location{
+    color: white;
+    font-weight: bold;
+    margin-top: 0.8rem;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.geo-location span:last-child{
+    font-weight: 400;
+}
+
+.geo-location a{
+    color: lightskyblue;
+}
+
+.geo-location a:hover{
+    color: white;
 }

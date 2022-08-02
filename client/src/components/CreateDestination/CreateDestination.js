@@ -1,20 +1,23 @@
 import './CreateDestination.css';
 
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 
 import * as destinationService from '../../services/destinationService';
+import * as dataValidation from '../../services/destinationDataValidationService';
+import * as constants from '../../constants/constants';
 import { useAuthContext } from '../../contexts/AuthContext';
-import { useNotificationContext, types } from '../../contexts/NotificationContext';
+import { useApplicationNotificationContext, types } from '../../contexts/ApplicationNotificationContext';
+import { useInvalidDataNotificationContext, debounce } from '../../contexts/InvalidDataNotificationContext';
 import LoadingSpinner from '../Common/Spinner';
-import { Alert } from 'react-bootstrap';
 
-const Create = () => {
-    const { addNotification } = useNotificationContext();
-    const { user } = useAuthContext();
+const CreateDestination = () => {
     const navigate = useNavigate();
-    const [errors, setErrors] = useState({ name: false })
+    const { user } = useAuthContext();
+    const { addNotification } = useApplicationNotificationContext();
+    const { addInvalidDataNotification } = useInvalidDataNotificationContext();
     const [isLoading, setIsLoading] = useState(false);
+    const [errors, setErrors] = useState([]);
 
     const onDestinationCreate = (e) => {
         e.preventDefault();
@@ -23,67 +26,33 @@ const Create = () => {
         const title = formData.get('title');
         const description = formData.get('description');
         const imageUrl = formData.get('imageUrl');
+        const latitude = formData.get('latitude');
+        const longitude = formData.get('longitude');
         const category = formData.get('category');
 
-        let validationResult = '';
-
-        if (title.length < 3 || title.length > 30) {
-            validationResult += 'Invalid title';
-            document.getElementById('title').style.borderColor = 'red';
-        }
-        else {
-            document.getElementById('title').style.borderColor = '#666';
-        }
-
-        if (description.length < 3 || description.length > 200) {
-            validationResult.length == 0
-                ? validationResult = 'Invalid description!'
-                : validationResult += ' and description!'
-            document.getElementById('description').style.borderColor = 'red';
-        } else {
-            validationResult.length > 0
-                ? validationResult += '!'
-                : validationResult = '';
-            document.getElementById('description').style.borderColor = '#666';
-        }
-
-        if (imageUrl.length < 15) {
-            validationResult += ' Image URL is too short!'
-            document.getElementById('image').style.borderColor = 'red';
-        } else {
-            document.getElementById('image').style.borderColor = '#666';
-        }
+        const { validationResult, invalidFields } = dataValidation.destinationFormValidation(title, description, imageUrl, latitude, longitude);
+        setErrors(invalidFields);
 
         if (validationResult.length != 0) {
-
-            // async function invalidRegisterData () {
-            //     setErrors(state => ({ ...state, name: validationResult }));
-            //     await new Promise(resolve => setTimeout(resolve, 3000));
-            //     setErrors(state => ({ ...state, name: false }));
-            //   }
-
-            // invalidRegisterData();
-
-            (async () => {
-                setErrors(state => ({ ...state, name: validationResult }));
-                await new Promise(resolve => setTimeout(resolve, 5000));
-                setErrors(state => ({ ...state, name: false }));
-            })();
-
+            addInvalidDataNotification(validationResult);
             return;
         };
-        
+
         setIsLoading(true);
 
-        destinationService.createDestination({
+        const destinationData = {
             title,
             description,
             imageUrl,
             category,
-        }, user.accessToken)
+            latitude,
+            longitude
+        };
+
+        destinationService.createDestination(destinationData, user.accessToken)
             .then(result => {
                 setIsLoading(false);
-                addNotification('Destination successfully created.', types.success);
+                addNotification(constants.appNotificationMessages.destinationCreateSuccess, types.success);
                 navigate('/home-page');
             })
             .catch(err => {
@@ -92,119 +61,198 @@ const Create = () => {
             });
     };
 
-    function debounce(func, timeout = 300) {
-        let timer;
-        return (...args) => {
-            clearTimeout(timer);
-            timer = setTimeout(() => { func.apply(this, args); }, timeout);
+    const cancelSubmitHandler = (e) => {
+        e.preventDefault();
+        navigate('/my-destinations');
+    };
+
+    const verifyChangeHandlerData = (name, value) => {
+        let validationResult = false;
+
+        switch (name) {
+            case 'title':
+                validationResult = dataValidation.titleValidation(value);
+                break;
+            case 'description':
+                validationResult = dataValidation.descriptionValidation(value);
+                break;
+            case 'image':
+                validationResult = dataValidation.imgUrlValidation(value);
+                break;
+            case 'latitude':
+                validationResult = dataValidation.latitudeValidation(value);
+                break;
+            case 'longitude':
+                validationResult = dataValidation.longitudeValidation(value);
+                break;
+        };
+
+        if (validationResult) {
+            addInvalidDataNotification(validationResult);
+            setErrors(state => [...state, name]);
+        } else if (errors.includes(name)) {
+            setErrors(state => state.filter(x => x != name));
         };
     };
 
-    const titleChangeHandler = debounce((e) => titleValidation(e));
+    const titleChangeHandler = debounce((e) =>
+        verifyChangeHandlerData('title', e.target.value)
+    );
 
-    const titleValidation = (e) => {
-        let currentTitle = e.target.value;
+    const descriptionChangeHandler = debounce((e) =>
+        verifyChangeHandlerData('description', e.target.value)
+    );
 
-        if (currentTitle.length < 3) {
-            setErrors(state => ({ ...state, name: 'Destination title should be at least 3 characters long!' }))
-        } else if (currentTitle.length > 30) {
-            setErrors(state => ({ ...state, name: 'Destination title should be max 30 characters long!' }))
-        } else {
-            setErrors(state => ({ ...state, name: false }))
-        };
-    };
+    const imgUrlChangeHandler = debounce((e) =>
+        verifyChangeHandlerData('image', e.target.value)
+    );
 
-    const descriptionChangeHandler = debounce((e) => descriptionValidation(e));
+    const latitudeChangeHandler = debounce((e) =>
+        verifyChangeHandlerData('latitude', e.target.value)
+    );
 
-    const descriptionValidation = (e) => {
-        let currentDescription = e.target.value;
-
-        if (currentDescription.length < 3) {
-            setErrors(state => ({ ...state, name: 'Destination description should be at least 3 characters long!' }))
-        } else if (currentDescription.length > 200) {
-            setErrors(state => ({ ...state, name: 'Destination description should be max 200 characters long!' }))
-        } else {
-            setErrors(state => ({ ...state, name: false }))
-        };
-    };
-
-    const imgUrlChangeHandler = debounce((e) => imgUrlValidation(e));
-
-    const imgUrlValidation = (e) => {
-        let currentImgUrl = e.target.value;
-
-        if (currentImgUrl.length < 15) {
-            setErrors(state => ({ ...state, name: 'Image URL should be at least 15 characters long!' }))
-        } else {
-            setErrors(state => ({ ...state, name: false }))
-        };
-    };
+    const longitudeChangeHandler = debounce((e) =>
+        verifyChangeHandlerData('longitude', e.target.value)
+    );
 
     const createPage = (
-        <>
-            <Alert variant="danger" show={errors.name}>{errors.name}</Alert>
+        <section id="create-page" className="create">
+            <form id="create-form" onSubmit={onDestinationCreate} method="POST">
+                <fieldset>
+                    <legend>Add new Destination</legend>
+                    <p className="field">
+                        <label htmlFor="title">Name</label>
+                        <span className="input">
+                            <input
+                                type="text"
+                                name="title"
+                                id="title"
+                                spellCheck="false"
+                                placeholder="Title..."
+                                style={{
+                                    borderColor: errors.includes('title')
+                                        ? 'red'
+                                        : '#666'
+                                }}
+                                onChange={titleChangeHandler}
+                            />
+                        </span>
+                    </p>
+                    <p className="field">
+                        <label htmlFor="description">Description</label>
+                        <span className="input">
+                            <textarea
+                                name="description"
+                                id="description"
+                                spellCheck="false"
+                                placeholder="Description..."
+                                style={{
+                                    borderColor: errors.includes('description')
+                                        ? 'red'
+                                        : '#666'
+                                }}
+                                onChange={descriptionChangeHandler}
+                            />
+                        </span>
+                    </p>
+                    <p className="field">
+                        <label htmlFor="image">Image</label>
+                        <span className="input">
+                            <input
+                                type="text"
+                                name="imageUrl"
+                                id="image"
+                                spellCheck="false"
+                                placeholder="Image URL..."
+                                style={{
+                                    borderColor: errors.includes('image')
+                                        ? 'red'
+                                        : '#666'
+                                }}
+                                onChange={imgUrlChangeHandler}
+                            />
+                        </span>
+                    </p>
+                    <p className='field geo-location'>
+                        <span>Geolocation</span>
+                        <span>Need help: <a href="https://www.latlong.net/" target="_blank">www.latlong.net</a></span>
+                    </p>
+                    <p className="field location">
+                        <label htmlFor="image">Lattitude:</label>
+                        <span className="input">
+                            <input
+                                type="number"
+                                min={-90}
+                                max={90}
+                                step={0.000001}
+                                required
+                                name="latitude"
+                                id="latitude"
+                                spellCheck="false"
+                                placeholder="lat..."
+                                style={{
+                                    borderColor: errors.includes('latitude')
+                                        ? 'red'
+                                        : '#666'
+                                }}
+                                onChange={latitudeChangeHandler}
+                            />
+                        </span>
+                        <label htmlFor="image">Longitude:</label>
+                        <span className="input">
+                            <input
+                                type="number"
+                                min={-180}
+                                max={180}
+                                step={0.000001}
+                                required
+                                name="longitude"
+                                id="longitude"
+                                spellCheck="false"
+                                placeholder="lng..."
+                                style={{
+                                    borderColor: errors.includes('longitude')
+                                        ? 'red'
+                                        : '#666'
+                                }}
+                                onChange={longitudeChangeHandler}
+                            />
+                        </span>
+                    </p>
 
-            <section id="create-page" className="create">
-                <form id="create-form" onSubmit={onDestinationCreate} method="POST">
-                    <fieldset>
-                        <legend>Add new Destination</legend>
-                        <p className="field">
-                            <label htmlFor="title">Name</label>
-                            <span className="input">
-                                <input
-                                    type="text"
-                                    name="title"
-                                    id="title"
-                                    spellCheck="false"
-                                    placeholder="Title..."
-                                    onChange={titleChangeHandler}
-                                />
-                            </span>
-                        </p>
-                        <p className="field">
-                            <label htmlFor="description">Description</label>
-                            <span className="input">
-                                <textarea
-                                    name="description"
-                                    id="description"
-                                    spellCheck="false"
-                                    placeholder="Description..."
-                                    onChange={descriptionChangeHandler}
-                                />
-                            </span>
-                        </p>
-                        <p className="field">
-                            <label htmlFor="image">Image</label>
-                            <span className="input">
-                                <input
-                                    type="text"
-                                    name="imageUrl"
-                                    id="image"
-                                    spellCheck="false"
-                                    placeholder="Image URL..."
-                                    onChange={imgUrlChangeHandler}
-                                />
-                            </span>
-                        </p>
-
-                        <p className="field">
-                            <label htmlFor="category">Category</label>
-                            <span className="input">
-                                <select id="category" name="category">
-                                    <option value="Mountains">Mountains</option>
-                                    <option value="Sea-and-ocean">Sea and ocean</option>
-                                    <option value="Lakes-and-rivers">Lakes and rivers</option>
-                                    <option value="Caves">Caves</option>
-                                    <option value="Historical-places">Historicl places</option>
-                                    <option value="Other">Other</option>
-                                </select>
-                            </span>
-                        </p>
-                        <button type="submit" className="btn-secondary btn-block" id="create-btn">Add Destination</button>
-                    </fieldset>
-                </form>
-            </section>
-        </>
+                    <p className="field">
+                        <label htmlFor="category">Category</label>
+                        <span className="input">
+                            <select id="category" name="category">
+                                <option value="Mountains">Mountains</option>
+                                <option value="Sea-and-ocean">Sea and ocean</option>
+                                <option value="Lakes-and-rivers">Lakes and rivers</option>
+                                <option value="Caves">Caves</option>
+                                <option value="Historical-places">Historical places</option>
+                                <option value="Other">Other</option>
+                            </select>
+                        </span>
+                    </p>
+                    <div id='edit-buttons'>
+                        <button
+                            type="cancel"
+                            className="btn-secondary btn-block"
+                            id="cancel-create-destination-btn"
+                            onClick={cancelSubmitHandler}
+                        >
+                            Cancel
+                        </button>
+                        <button
+                            type="submit"
+                            className="btn-secondary btn-block"
+                            id="create-btn"
+                        >
+                            Add Destination
+                        </button>
+                    </div>
+                </fieldset>
+            </form>
+        </section>
     );
 
     return (
@@ -214,4 +262,4 @@ const Create = () => {
     );
 }
 
-export default Create;
+export default CreateDestination;
