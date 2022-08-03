@@ -1,5 +1,4 @@
 import { createContext, useContext } from 'react';
-
 import useLocalStorage from '../hooks/useLocalStorage';
 
 const initialAuthState = {
@@ -32,4 +31,4 @@ export const useAuthContext = () => {
     const authState = useContext(AuthContext);
 
     return authState;
-}
+};
