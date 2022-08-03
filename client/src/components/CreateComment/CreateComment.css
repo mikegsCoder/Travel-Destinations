@@ -80,8 +80,8 @@
 #create-comment-form,
 #create-comment-form fieldset,
 #create-comment-form legend,
-#create-comment-form label,
-#create-comment-form textarea {
+#create-comment-form label{
+/* #create-comment-form textarea { */
     display: block;
     width: 100%;
     border: none;
@@ -89,12 +89,18 @@
 }
 
 #create-comment-form textarea {
+    display: block;
+    width: 100%;
+    /* border: none; */
+    padding: 0.7rem;
     background: transparent;
     color: white;
+    border: 1px solid #666;
+    height: 13rem;
 }
 
-#comment-text:focus {
-    border-color: white !important;
+#create-comment-form textarea:focus {
+    outline: none;
 }
 
 #create-comment-form fieldset,
@@ -113,10 +119,8 @@
     position: relative;
 }
 
-#create-comment-text{
-    height: 13rem;
-    border: 1px solid #666 !important;
-}
+/* #create-comment-text{
+} */
 
 #create-comment-form legend {
     width: 60%;

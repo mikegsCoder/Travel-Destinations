@@ -18,20 +18,25 @@
     justify-content: flex-start;
     opacity: 0.8;
     border-radius: 3%;
+    border: 2px solid #666 !important;
 }
 
 #edit-comment-form:hover {
     opacity: 1;
-    border: 2px solid white;
+    border: 2px solid white !important;
 }
 
 #edit-comment-text{
-    border: 1px solid #666 !important;
+    display: block;
+    width: 100%;
+    padding: 0.4rem;
+    border: 1px solid #666 ;
     color: white;
 }
 
 #edit-comment-text:focus{
-    border: 1px solid white;
+    outline: none;
+    border: 1px solid #666;
 }
 
 .edit-comment-buttons{
@@ -67,8 +72,7 @@
 #edit-comment-form,
 #edit-comment-form fieldset,
 #edit-comment-form legend,
-#edit-comment-form label,
-#edit-comment-form textarea{
+#edit-comment-form label{
     display: block;
     width: 100%;
     border: none;
@@ -131,11 +135,17 @@
     height: 13rem;
 }
 
-#edit-comment-page > div{
+/* #edit-comment-page > div{
     position: absolute;
     top: 12vh;
     left: 50%;
     transform: translate(-50%);
-    /* width: 100%; */
     border: 2px solid red;
+} */
+
+#edit-buttons{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 15px;
 }
