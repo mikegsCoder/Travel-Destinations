@@ -2,7 +2,7 @@
 
 :dart:  My project for the [ReactJS](https://softuni.bg/trainings/3727/reactjs-june-2022) course at SoftUni (June 2022) deployed on Firebase 👉 [Travel Destinations](https://travel-destinations-88814.firebaseapp.com/)
 
-## :information_source: How It Works
+## :information_source: Application functionality:
 
 - Guest visitors: 
   - browse all destinations;
@@ -29,48 +29,51 @@
   - implemented Carousel with React Bootstrap;
   - implemented geolocations with React Leaflet;
   - implemented data validation for Register, Create Destination, Edit Destination, Create Comment and Edit Comment forms;
-  - implemented notification providers.
+  - implemented notification providers;
+  - implemented comments list pagination;
+  - responsive design.
 
-## :hammer_and_wrench: Built With
+## :hammer_and_wrench: Technologies and Tools used:
 
 - ReactJS
 - React Router 6
 - React Bootstrap
 - React Leaflet
+- JavaScript
 - HTML 5
 - CSS
 - Font Awesome
 
-## :gear: Application Backend
+## :gear: Application Backend:
 
  - [SoftUni practice server](https://github.com/softuni-practice-server/softuni-practice-server) populated with data for Travel Destinations application.
  - Developed by [Viktor Kostadinov](https://github.com/viktorpts)
  - Deployed on Heroku [Admin Panel](http://travel-destinations-server.herokuapp.com/admin/)
 
-## :framed_picture: Screenshot - Destination Carousel
+## :framed_picture: Screenshot - Destination Carousel:
 
 ![TravelDestinations-AllDestinations](https://travel-destinations-88814.firebaseapp.com/images/screenshots/DestinationCarousel.jpg)
 
-## :framed_picture: Screenshot - Destination Details
+## :framed_picture: Screenshot - Destination Details:
 
 ![TravelDestinations-DestinationDetails](https://travel-destinations-88814.firebaseapp.com/images/screenshots/DestinationDetails.jpg)
 
-## :framed_picture: Screenshot - Destination Geolocation
+## :framed_picture: Screenshot - Destination Geolocation:
 
 ![TravelDestinations-DestinationLocation](https://travel-destinations-88814.firebaseapp.com/images/screenshots/DestinationLocation.jpg)
 
-## :framed_picture: Screenshot - Create Destination with Data Validation
+## :framed_picture: Screenshot - Create Destination with Data Validation:
 
 ![TravelDestinations-CreateDestination](https://travel-destinations-88814.firebaseapp.com/images/screenshots/CreateDestination.jpg)
 
-## :framed_picture: Screenshot - Comments List Paginated
+## :framed_picture: Screenshot - Comments List Paginated:
 
 ![TravelDestinations-CommentsList](https://travel-destinations-88814.firebaseapp.com/images/screenshots/CommentsList.jpg)
 
-## :framed_picture: Screenshot - User Profile Statistics
+## :framed_picture: Screenshot - User Profile Statistics:
 
 ![TravelDestinations-UserProfileStatistics](https://travel-destinations-88814.firebaseapp.com/images/screenshots/UserProfileStatistics.jpg)
 
- ## License
+ ## License:
 
 This project is licensed under the [MIT License](LICENSE).
