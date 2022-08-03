@@ -28,7 +28,6 @@ const DestinationCarousel = ({
                     </div>
                     <Carousel.Caption>
                         <h3>Title: {x.title}</h3>
-                        {/* <p>Category: {categories.find(c => c.value == x.category).text}</p> */}
                         <p>Category: {x.category?.includes('-')
                                     ? ' ' + x.category.replaceAll("-", " ")
                                     : ' ' + x.category}
