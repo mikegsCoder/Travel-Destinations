@@ -20,7 +20,6 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    /* height: 70vh; */
     width: 100%;
     color: white;
 }
@@ -81,7 +80,6 @@
 #create-comment-form fieldset,
 #create-comment-form legend,
 #create-comment-form label{
-/* #create-comment-form textarea { */
     display: block;
     width: 100%;
     border: none;
@@ -91,7 +89,6 @@
 #create-comment-form textarea {
     display: block;
     width: 100%;
-    /* border: none; */
     padding: 0.7rem;
     background: transparent;
     color: white;
@@ -118,9 +115,6 @@
     padding: 1em 2em 2em 2em;
     position: relative;
 }
-
-/* #create-comment-text{
-} */
 
 #create-comment-form legend {
     width: 60%;
@@ -169,6 +163,5 @@
     top: 12vh;
     left: 50%;
     transform: translate(-50%);
-    /* width: 100%; */
     border: 2px solid red;
 }

@@ -2,7 +2,6 @@ import { createContext, useContext, useState, useCallback } from "react";
 
 export const InvalidDataNotificationContext = createContext();
 
-// export function debounce(func, timeout = 350) {
 export function debounce(func, timeout = 500) {
     let timer;
     return (...args) => {

@@ -10,7 +10,6 @@ import { useAuthContext } from '../../contexts/AuthContext';
 import { useApplicationNotificationContext, types } from '../../contexts/ApplicationNotificationContext';
 import useCommentsCountState from '../../hooks/useCommentsCountState';
 import useDestinationState from '../../hooks/useDestinationState';
-// import useLikeState from '../../hooks/useLikeState';
 import useLikesState from '../../hooks/useLikesState';
 import ConfirmDeleteDialog from '../Common/ConfirmDeleteDialog';
 import LoadingSpinner from '../Common/Spinner';
@@ -25,7 +24,6 @@ const Details = () => {
     const [showDeleteDialog, setShowDeleteDialog] = useState(false);
     const [isDeleteLoading, setIsDeleteLoading] = useState(false);
     const [commentsCount, setCommentsCount] = useCommentsCountState(destinationId);
-    // const [like, setLike] = useLikeState(destinationId, user._id);
 
     const deleteHandler = (e) => {
         e.preventDefault();
@@ -79,19 +77,6 @@ const Details = () => {
             });
     };
 
-    // const dislikeButtonClick = () => {
-    //     // likeService.dislike(destinationId, user._id)
-    //     //     .then(() => {
-    //     //         likeService.getDestinationLikes(destinationId)
-    //     //             .then(likesResult => {
-    //     //                 setLikes(likesResult);
-    //     //             });
-    //     //         addNotification(constants.appNotificationMessages.destinationLikeSuccess + destination.title + '.', types.success);
-    //     //     });
-
-    //     console.log(like);
-    // };
-
     const mapClickHandler = (e) => {
         e.preventDefault();
         navigate(`/map/${destinationId}`);
@@ -104,7 +89,7 @@ const Details = () => {
                 onClick={likeButtonClick}>
                 Like
             </button>
-             : null
+            : null
     )
 
     const ownerButtons = (

@@ -111,28 +111,6 @@ const ProfileStatistics = () => {
                                     ? userDestinations
                                     : noDestinations
                             }
-                            {/* {
-                                likes > 0
-                                    ? <p>You liked {likes} destination
-                                        {
-                                            likes == 1 
-                                                ? '.'
-                                                : 's.'
-                                        }
-                                    </p>
-                                    : <p>You haven't liked any destination yet.</p>
-                            }
-                            {
-                                comments > 0
-                                    ? <p>You created {comments} comment
-                                        {
-                                            comments == 1 
-                                                ? '.'
-                                                : 's.'
-                                        }
-                                    </p>
-                                    : <p>You haven't created any comment yet.</p>
-                            } */}
                         </div>
                         <div className='likes-comments-info'>
                             {

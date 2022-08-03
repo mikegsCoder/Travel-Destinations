@@ -1,6 +1,6 @@
 import './EditDestination.css';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 
 import * as destinationService from '../../services/destinationService';
@@ -228,15 +228,15 @@ const EditDestination = () => {
                     <p className="field">
                         <label htmlFor="category">Category</label>
                         <span className="input">
-                            <select
+                             <select
                                 id="category"
                                 name="category"
                                 defaultValue={destination.category}
                             >
                                 {constants.categories.map(x =>
-                                    <option key={x.value} value={x.value}>{x.text}</option>)
+                                    <option key={x.value} value={x.value} >{x.text}</option>)
                                 }
-                            </select>
+                            </select> 
                         </span>
                     </p>
                     <div id='edit-buttons'>

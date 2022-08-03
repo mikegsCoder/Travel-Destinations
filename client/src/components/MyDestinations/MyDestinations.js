@@ -1,6 +1,5 @@
 import './MyDestinations.css';
 
-// import React from 'react';
 import { useState, useEffect } from 'react';
 
 import * as destinationService from '../../services/destinationService';
