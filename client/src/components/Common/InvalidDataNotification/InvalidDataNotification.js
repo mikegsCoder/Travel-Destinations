@@ -11,7 +11,7 @@ const InvalidDataNotification = () =>{
     }
 
     return(
-        <Alert variant="danger" show={errors.name}>{errors.name}</Alert>
+        <Alert variant="danger" show={errors.name.length > 0}>{errors.name}</Alert>
     )
 }
 
