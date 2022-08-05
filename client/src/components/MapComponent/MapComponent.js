@@ -36,7 +36,7 @@ const MapComponent = () => {
                 setPosition([destinationResult.latitude, destinationResult.longitude]);
                 setIsLoading(false);
             });
-    }, []);
+    }, [destinationId]);
 
     const imgClickHandler = (e) => {
         e.preventDefault();

@@ -36,7 +36,7 @@
 ## :hammer_and_wrench: Technologies and Tools used:
 
 - ReactJS
-- React Router 6
+- React Router v6
 - React Bootstrap
 - React Leaflet
 - JavaScript
