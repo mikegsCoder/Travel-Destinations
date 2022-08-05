@@ -2,16 +2,35 @@
 
 :dart:  My project for the [ReactJS](https://softuni.bg/trainings/3727/reactjs-june-2022) course at SoftUni (June 2022) deployed on Firebase 👉 [Travel Destinations](https://travel-destinations-88814.firebaseapp.com/)
 
-## :information_source: Application functionality:
+## :exclamation: Getting Started:
 
-- Guest visitors: 
+1. Clone the repo
+   ```sh
+   git clone https://github.com/mikegsCoder/Travel-Destinations.git
+   ```
+2. Open Visual Studio Code in the "client" folder and open the Terminal
+   ```sh
+   View -> Terminal
+   ```
+3. Install NPM packages
+   ```sh
+   npm install
+   ```
+4. Start the project (by default this project uses the server deployed on Heroku)
+   ```sh
+   npm start
+   ```
+
+## :information_source: Application Functionality:
+
+- Guest visitors can: 
   - browse all destinations;
   - browse recent destinations;
   - browse destinations by category;
   - view destination details;
   - view comments for the destination;
   - view destination geolocation. 
-- Logged in users:
+- Logged in users can:
   - browse his own destinations; 
   - create new destinations;
   - edit his own destinations;
@@ -20,7 +39,7 @@
   - edit his own comments;
   - delete his own comment;
   - view profile statistics by clicking on his email on the header.  
-- Built in users:
+- Default users:
   - email: peter@abv.bg with password: 123456
   - email: john@abv.bg with password: 123456
 - Some more features:
