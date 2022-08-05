@@ -20,6 +20,20 @@
    ```sh
    npm start
    ```
+5. If you want to use the local server, you have to go in constants.js and comment the baseUrl constant, related to the remote server
+   ```sh
+   1. Go to constants.js (located in client/src/constants/)
+   2. Comment the baseUrl constant, related to the remote server.
+   2. Uncomment the baseUrl constant, related to the local server.
+   ```
+6. Go to the "server" folder
+   ```sh
+   cd server
+   ```
+7. Start the server
+   ```sh
+   node server.js
+   ```
 
 ## :information_source: Application Functionality:
 
