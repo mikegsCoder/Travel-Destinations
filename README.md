@@ -2,7 +2,7 @@
 
 :dart:  My project for the [ReactJS](https://softuni.bg/trainings/3727/reactjs-june-2022) course at SoftUni (June 2022) deployed on Firebase 👉 [Travel Destinations](https://travel-destinations-88814.firebaseapp.com/)
 
-## :exclamation: Getting Started:
+## :arrow_forward: Getting Started:
 
 1. Clone the repo
    ```sh
