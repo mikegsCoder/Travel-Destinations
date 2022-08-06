@@ -16,7 +16,7 @@
    ```sh
    npm install
    ```
-4. Start the project (by default this project uses the server deployed on Heroku)
+4. Start the project (by default this project uses remote server deployed on Heroku)
    ```sh
    npm start
    ```
@@ -48,6 +48,7 @@
   - browse his own destinations; 
   - create new destinations;
   - edit his own destinations;
+  - delete his own destinations;
   - like destination from other users;
   - create comments for all destinations without limit of created comments for destination;
   - edit his own comments;
@@ -64,6 +65,7 @@
   - implemented data validation for Register, Create Destination, Edit Destination, Create Comment and Edit Comment forms;
   - implemented notification providers;
   - implemented comments list pagination;
+  - implemented 404 (Not Found) component;
   - responsive design.
 
 ## :hammer_and_wrench: Technologies and Tools used:
