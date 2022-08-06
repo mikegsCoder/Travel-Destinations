@@ -115,7 +115,11 @@
 
 ## :framed_picture: Screenshot - 404 (Not Found):
 
-![TravelDestinations-NptFound](https://travel-destinations-88814.firebaseapp.com/images/screenshots/404.jpg)
+![TravelDestinations-NotFound](https://travel-destinations-88814.firebaseapp.com/images/screenshots/404.jpg)
+
+## :framed_picture: Screenshot - Error Boundary in action:
+
+![TravelDestinations-ErrorBoundary](https://travel-destinations-88814.firebaseapp.com/images/screenshots/ErrorBoundary.jpg)
 
  ## License:
 
