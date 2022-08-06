@@ -4,7 +4,6 @@ import { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import * as commentService from '../../services/commentService';
 import * as constants from '../../constants/constants';
-import { useApplicationNotificationContext, types } from '../../contexts/ApplicationNotificationContext';
 import useDestinationState from '../../hooks/useDestinationState';
 import useCommentsCountState from '../../hooks/useCommentsCountState';
 import LoadingSpinner from '../Common/Spinner';
@@ -18,7 +17,6 @@ const CommentList = () => {
     const [page, setPage] = useState(1);
     const [destination, setDestination] = useDestinationState(destinationId);
     const [isLoading, setIsLoading] = useState(false);
-    const { addNotification } = useApplicationNotificationContext();
     const pages = Math.ceil(commentsCount / constants.pageSize);
 
     useEffect(() => {
@@ -28,12 +26,7 @@ const CommentList = () => {
             .then(result => {
                 setComments(result);
                 setIsLoading(false);
-            })
-            .catch(err => {
-                addNotification(err, types.danger);
-                setIsLoading(false);
             });
-
     }, [page]);
 
     const onPrevBtnClick = (e) => {

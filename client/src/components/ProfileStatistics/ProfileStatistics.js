@@ -7,13 +7,11 @@ import * as destinationService from '../../services/destinationService';
 import * as likeService from '../../services/likeService';
 import * as commentService from '../../services/commentService';
 import { useAuthContext } from '../../contexts/AuthContext';
-import { useApplicationNotificationContext, types } from '../../contexts/ApplicationNotificationContext';
 import LoadingSpinner from '../Common/Spinner';
 
 const ProfileStatistics = () => {
     const navigate = useNavigate();
     const { user } = useAuthContext();
-    const { addNotification } = useApplicationNotificationContext();
     const [destinations, setDestinations] = useState([]);
     const [likes, setLikes] = useState(0);
     const [comments, setComments] = useState(0);
@@ -30,29 +28,17 @@ const ProfileStatistics = () => {
             .then(destinationResult => {
                 setDestinations(destinationResult);
                 setIsDestinationsLoading(false);
-            })
-            .catch(err => {
-                addNotification(err, types.danger);
-                setIsDestinationsLoading(false);
             });
 
         likeService.getLikesByUseId(user._id)
             .then(likeResult => {
                 setLikes(likeResult);
                 setIsLikesLoading(false);
-            })
-            .catch(err => {
-                addNotification(err, types.danger);
-                setIsLikesLoading(false);
             });
 
         commentService.getCommentsByUseId(user._id)
             .then(commentResult => {
                 setComments(commentResult);
-                setIsCommentsLoading(false);
-            })
-            .catch(err => {
-                addNotification(err, types.danger);
                 setIsCommentsLoading(false);
             });
     }, []);

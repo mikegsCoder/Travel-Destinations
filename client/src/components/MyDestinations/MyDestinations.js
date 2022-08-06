@@ -4,14 +4,12 @@ import { useState, useEffect } from 'react';
 
 import * as destinationService from '../../services/destinationService';
 import { useAuthContext } from '../../contexts/AuthContext';
-import { useApplicationNotificationContext, types } from '../../contexts/ApplicationNotificationContext';
 import DestinationCarousel from '../Common/DestinationCarousel';
 import LoadingSpinner from '../Common/Spinner';
 import NoDestinations from '../Common/NoDestinations';
 
 const MyDestinations = () => {
     const { user } = useAuthContext();
-    const { addNotification } = useApplicationNotificationContext();
     const [destinations, setDestinations] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
 
@@ -21,10 +19,6 @@ const MyDestinations = () => {
         destinationService.getMyDestinations(user._id)
             .then(destinationResult => {
                 setDestinations(destinationResult);
-                setIsLoading(false);
-            })
-            .catch(err => {
-                addNotification(err, types.danger);
                 setIsLoading(false);
             });
     }, []);

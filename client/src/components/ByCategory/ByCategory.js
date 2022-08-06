@@ -4,13 +4,11 @@ import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 
 import * as destinationService from '../../services/destinationService';
-import { useApplicationNotificationContext, types } from '../../contexts/ApplicationNotificationContext';
 import DestinationCarousel from '../Common/DestinationCarousel';
 import LoadingSpinner from '../Common/Spinner';
 import NoDestinations from '../Common/NoDestinations';
 
 const MyDestinations = () => {
-    const { addNotification } = useApplicationNotificationContext();
     const { category } = useParams();
     const [destinations, setDestinations] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
@@ -21,10 +19,6 @@ const MyDestinations = () => {
         destinationService.getByCategory(category)
             .then(destinationResult => {
                 setDestinations(destinationResult);
-                setIsLoading(false);
-            })
-            .catch(err => {
-                addNotification(err, types.danger);
                 setIsLoading(false);
             });
     }, [category]);
