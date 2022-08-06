@@ -49,8 +49,8 @@
   - create new destinations;
   - edit his own destinations;
   - delete his own destinations;
-  - like destination from other users;
-  - create comments for all destinations without limit of created comments for destination;
+  - like destination created by other users (only once per destination);
+  - create comments for all destinations with no limit on created comments per destination;
   - edit his own comments;
   - delete his own comment;
   - view profile statistics by clicking on his email on the header.  
