@@ -109,6 +109,10 @@
 
 ![TravelDestinations-UserProfileStatistics](https://travel-destinations-88814.firebaseapp.com/images/screenshots/UserProfileStatistics.jpg)
 
+## :framed_picture: Screenshot - 404 (Not Found):
+
+![TravelDestinations-NptFound](https://travel-destinations-88814.firebaseapp.com/images/screenshots/404.jpg)
+
  ## License:
 
 This project is licensed under the [MIT License](LICENSE).
