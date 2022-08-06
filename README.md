@@ -117,10 +117,6 @@
 
 ![TravelDestinations-NotFound](https://travel-destinations-88814.firebaseapp.com/images/screenshots/404.jpg)
 
-## :framed_picture: Screenshot - Error Boundary in action:
-
-![TravelDestinations-ErrorBoundary](https://travel-destinations-88814.firebaseapp.com/images/screenshots/ErrorBoundary.jpg)
-
 ## License:
 
 This project is licensed under the [MIT License](LICENSE).
