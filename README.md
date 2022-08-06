@@ -97,6 +97,10 @@
 
 ![TravelDestinations-DestinationLocation](https://travel-destinations-88814.firebaseapp.com/images/screenshots/DestinationLocation.jpg)
 
+## :framed_picture: Screenshot - Register with Data Validation:
+
+![TravelDestinations-Register](https://travel-destinations-88814.firebaseapp.com/images/screenshots/Register.jpg)
+
 ## :framed_picture: Screenshot - Create Destination with Data Validation:
 
 ![TravelDestinations-CreateDestination](https://travel-destinations-88814.firebaseapp.com/images/screenshots/CreateDestination.jpg)
