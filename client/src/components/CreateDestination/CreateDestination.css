@@ -26,6 +26,12 @@
     border: 2px solid white !important;
 }
 
+.btn-secondary {
+    background-color: #6c757d;
+    border-color: #6c757d;
+    color: #fff;
+}
+
 #create-btn,
 #cancel-create-destination-btn {
     position: relative;
