@@ -1,6 +1,6 @@
 {
-  "name": "travel-destinations-react-app",
-  "version": "0.1.0",
+  "name": "travel-destinations",
+  "version": "1.6",
   "private": true,
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.1.1",
