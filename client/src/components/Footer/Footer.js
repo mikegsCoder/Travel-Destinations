@@ -11,7 +11,7 @@ const Footer = () => {
                 </a>
             </p>
             <p className="footer-right">
-                React Course Project @ {' '}
+                ReactJS Course Project @ {' '}
                 <a href="https://softuni.bg/" target="_blank" rel="noreferrer">
                     SoftUni
                 </a>
