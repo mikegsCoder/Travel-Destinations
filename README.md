@@ -121,6 +121,6 @@
 
 ![TravelDestinations-ErrorBoundary](https://travel-destinations-88814.firebaseapp.com/images/screenshots/ErrorBoundary.jpg)
 
- ## License:
+## License:
 
 This project is licensed under the [MIT License](LICENSE).

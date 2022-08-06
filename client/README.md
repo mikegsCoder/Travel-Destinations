@@ -1,70 +1,80 @@
-# Getting Started with Create React App
+# Travel Destinations
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+:dart:  My project for the [ReactJS](https://softuni.bg/trainings/3727/reactjs-june-2022) course at SoftUni (June 2022) deployed on Firebase 👉 [Travel Destinations](https://travel-destinations-88814.firebaseapp.com/)
 
-## Available Scripts
+## :arrow_forward: Getting Started:
 
-In the project directory, you can run:
+1. Clone the repo
+   ```sh
+   git clone https://github.com/mikegsCoder/Travel-Destinations.git
+   ```
+2. Open Visual Studio Code in the "client" folder and open the Terminal
+   ```sh
+   View -> Terminal
+   ```
+3. Install NPM packages
+   ```sh
+   npm install
+   ```
+4. Start the project (by default this project uses remote server deployed on Heroku)
+   ```sh
+   npm start
+   ```
+5. If you want to use the local server:
+   ```sh
+   1. Open constants.js (location: client/src/constants/)
+   2. Comment the baseUrl constant, related to the remote server.
+   2. Uncomment the baseUrl constant, related to the local server.
+   ```
+6. Go to the "server" folder
+   ```sh
+   cd server
+   ```
+7. Start the server
+   ```sh
+   node server.js
+   ```
 
-### `npm start`
+## :information_source: Application Functionality:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- Guest visitors can: 
+  - browse all destinations;
+  - browse recent destinations;
+  - browse destinations by category;
+  - view destination details;
+  - view comments for the destination;
+  - view destination geolocation. 
+- Logged in users can:
+  - browse his own destinations; 
+  - create new destinations;
+  - edit his own destinations;
+  - delete his own destinations;
+  - like destination created by other users (only once per destination);
+  - create comments for all destinations with no limit on created comments per destination;
+  - edit his own comments;
+  - delete his own comment;
+  - view profile statistics by clicking on his email on the header.  
+- Default users:
+  - email: peter@abv.bg with password: 123456
+  - email: john@abv.bg with password: 123456
+- Some more features:
+  - implemented Error Boundary;
+  - implemented Private and Guarded routes;
+  - implemented Carousel with React Bootstrap;
+  - implemented geolocations with React Leaflet;
+  - implemented data validation for Register, Create Destination, Edit Destination, Create Comment and Edit Comment forms;
+  - implemented notification providers;
+  - implemented comments list pagination;
+  - implemented 404 (Not Found) component;
+  - responsive design.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## :hammer_and_wrench: Technologies and Tools used:
 
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- ReactJS
+- React Router v6
+- React Bootstrap
+- React Leaflet
+- JavaScript
+- HTML 5
+- CSS
+- Font Awesome
