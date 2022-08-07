@@ -53,10 +53,7 @@
   - create comments for all destinations with no limit on created comments per destination;
   - edit his own comments;
   - delete his own comment;
-  - view profile statistics by clicking on his email on the header.  
-- Default users:
-  - email: peter@abv.bg with password: 123456
-  - email: john@abv.bg with password: 123456
+  - view profile statistics by clicking on his email on the header section.  
 - Some more features:
   - implemented Error Boundary;
   - implemented Guarded route;
@@ -68,6 +65,13 @@
   - implemented comments list pagination;
   - implemented 404 (Not Found) component;
   - responsive design.
+
+## 🧪 Test Accounts
+&nbsp;&nbsp;&nbsp;&nbsp;Email: **peter@abv.bg**  
+&nbsp;&nbsp;&nbsp;&nbsp;Password: **123456**  
+
+&nbsp;&nbsp;&nbsp;&nbsp;Email: **john@abv.bg**  
+&nbsp;&nbsp;&nbsp;&nbsp;Password: **123456** 
 
 ## :hammer_and_wrench: Technologies and Tools used:
 
@@ -117,6 +121,10 @@
 ## :framed_picture: Screenshot - 404 (Not Found):
 
 ![TravelDestinations-NotFound](https://travel-destinations-88814.firebaseapp.com/images/screenshots/404.jpg)
+
+## :v: Leave a feedback
+Give a :star: if you like this app.
+Thank you ❤️!
 
 ## License:
 
