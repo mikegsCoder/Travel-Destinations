@@ -59,9 +59,10 @@
   - email: john@abv.bg with password: 123456
 - Some more features:
   - implemented Error Boundary;
-  - implemented Private and Guarded routes;
+  - implemented Guarded route;
+  - implemented private routes DestinationOwner and CommentOwner;
   - implemented Carousel with React Bootstrap;
-  - implemented geolocations with React Leaflet;
+  - implemented Geolocations with React Leaflet;
   - implemented data validation for Register, Create Destination, Edit Destination, Create Comment and Edit Comment forms;
   - implemented notification providers;
   - implemented comments list pagination;
