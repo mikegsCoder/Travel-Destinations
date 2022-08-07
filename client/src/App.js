@@ -4,7 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 import { Routes, Route } from 'react-router-dom';
 
-import { AuthProvider } from './contexts/AuthContext';
+import { AuthProvider } from './contexts/AuthContext'
 import { ApplicationNotificationProvider } from './contexts/ApplicationNotificationContext';
 import { InvalidDataNotificationProvider } from './contexts/InvalidDataNotificationContext';
 
@@ -32,8 +32,9 @@ import ApplicationNotification from './components/Common/ApplicationNotification
 import InvalidDataNotification from './components/Common/InvalidDataNotification';
 
 import ErrorBoundary from './components/Common/ErrorBoundary';
-import PrivateRoute from './components/Common/PrivateRoute';
 import GuardedRoute from './components/Common/GuardedRoute';
+import DestinationOwner from './components/Common/DestinationOwner';
+import CommentOwner from './components/Common/CommentOwner';
 
 function App() {
     return (
@@ -47,7 +48,6 @@ function App() {
                             <InvalidDataNotification />
                             <main id="site-content">
                                 <Routes>
-
                                     <Route path="/" element={<HomePage />} />
                                     <Route path="/home-page" element={<HomePage />} />
                                     <Route path="/login" element={<Login />} />
@@ -59,10 +59,15 @@ function App() {
                                     <Route path="/comments/:destinationId" element={<CommentList />} />
                                     <Route path="/map/:destinationId" element={<MapComponent />} />
 
-                                    <Route path="/edit/:destinationId" element={<PrivateRoute><EditDestination /></PrivateRoute>} />
-                                    <Route path="/edit-comment/:commentId" element={<PrivateRoute><EditComment /></PrivateRoute>} />
+                                    <Route element={<DestinationOwner />}>
+                                        <Route path="/edit/:destinationId" element={<EditDestination />} />
+                                    </Route>
 
-                                    <Route element={<GuardedRoute />} >
+                                    <Route element={<CommentOwner />}>
+                                        <Route path="/edit-comment/:commentId" element={<EditComment />} />
+                                    </Route>
+
+                                    <Route element={<GuardedRoute />}>
                                         <Route path="/logout" element={<Logout />} />
                                         <Route path="/profile" element={<ProfileStatistics />} />
                                         <Route path="/my-destinations" element={<MyDestinations />} />
@@ -71,7 +76,6 @@ function App() {
                                     </Route>
 
                                     <Route path="*" element={<NotFound />} />
-
                                 </Routes>
                             </main>
 
@@ -81,7 +85,7 @@ function App() {
                 </ApplicationNotificationProvider>
             </AuthProvider>
         </ErrorBoundary>
-    );
+    )
 }
 
-export default App;
+export default App
