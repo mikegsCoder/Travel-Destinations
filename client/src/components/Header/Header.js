@@ -1,6 +1,7 @@
 import './Header.css';
 
 import { useNavigate, Link } from 'react-router-dom';
+
 import { useAuthContext } from '../../contexts/AuthContext';
 
 const Header = () => {
@@ -11,7 +12,7 @@ const Header = () => {
     const emailClickHandler = (e) => {
         e.preventDefault();
         navigate('/profile');
-    }
+    };
 
     const guestNavigation = (
         <>
@@ -57,10 +58,10 @@ const Header = () => {
 
         if (category == 'Select Category :') {
             return;
-        }
+        };
 
         navigate(`/by-category/${category}`);
-    }
+    };
 
     return (
         <div className='navbar'>
@@ -100,6 +101,6 @@ const Header = () => {
             </ul>
         </div>
     );
-}
+};
 
 export default Header;

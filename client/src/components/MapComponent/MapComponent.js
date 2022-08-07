@@ -41,7 +41,7 @@ const MapComponent = () => {
     const imgClickHandler = (e) => {
         e.preventDefault();
         navigate(`/details/${destinationId}`);
-    }
+    };
 
     const map = (
         <>
@@ -89,6 +89,6 @@ const MapComponent = () => {
             {isLoading ? <LoadingSpinner /> : map}
         </>
     );
-}
+};
 
 export default MapComponent;

@@ -201,6 +201,6 @@ const Register = () => {
             {isLoading ? <LoadingSpinner /> : registerPage}
         </>
     );
-}
+};
 
 export default Register;

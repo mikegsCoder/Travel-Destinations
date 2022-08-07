@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+
 import * as destinationService from '../services/destinationService';
 
 const useDestinationState = (destinationId) => {

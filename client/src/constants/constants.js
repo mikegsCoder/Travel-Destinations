@@ -2,13 +2,13 @@
 const baseUrl = {
     auth: 'https://travel-destinations-server.herokuapp.com',
     data: 'https://travel-destinations-server.herokuapp.com/data'
-}
+};
 
 // Using local server:
 // const baseUrl = {
 //     auth: 'http://localhost:3030',
 //     data: 'http://localhost:3030/data'
-// }
+// };
 
 const pageSize = 3;
 
@@ -49,7 +49,7 @@ const appNotificationMessages = {
     commentCreateSuccess: 'Successfully commented destination.',
     commentEditSuccess: 'Successfully edited comment.',
     commentDeleteSuccess: 'Successfully deleted comment.'
-}
+};
 
 const categories = [
     { value: 'Mountains', text: 'Mountains' },

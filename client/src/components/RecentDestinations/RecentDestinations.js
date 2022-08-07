@@ -35,6 +35,6 @@ const RecentDestinations = () => {
             {isLoading ? <LoadingSpinner /> : recentDestinations}
         </>
     );
-}
+};
 
 export default RecentDestinations;

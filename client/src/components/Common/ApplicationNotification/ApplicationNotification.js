@@ -8,7 +8,7 @@ const ApplicationNotification = () => {
 
     if (!notification.show) {
         return null;
-    }
+    };
 
     return (
         <Toast className="notification d-inline-block m-1" bg={notification.type} onClose={hideNotification}>

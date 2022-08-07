@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+
 import * as commentService from '../services/commentService';
 
 const useCommentState = (destinationId) => {

@@ -80,7 +80,7 @@ const Details = () => {
     const mapClickHandler = (e) => {
         e.preventDefault();
         navigate(`/map/${destinationId}`);
-    }
+    };
 
     const userButtons = (
         user._id && !Array.from(likes)?.includes(user._id)
@@ -90,7 +90,7 @@ const Details = () => {
                 Like
             </button>
             : null
-    )
+    );
 
     const ownerButtons = (
         <>
@@ -197,6 +197,6 @@ const Details = () => {
             }
         </>
     );
-}
+};
 
 export default Details;

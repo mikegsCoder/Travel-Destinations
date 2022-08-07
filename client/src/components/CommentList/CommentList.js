@@ -2,6 +2,7 @@ import './CommentList.css';
 
 import { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
+
 import * as commentService from '../../services/commentService';
 import * as constants from '../../constants/constants';
 import useDestinationState from '../../hooks/useDestinationState';
@@ -89,6 +90,6 @@ const CommentList = () => {
             {isLoading ? <LoadingSpinner /> : commentList}
         </>
     );
-}
+};
 
 export default CommentList;

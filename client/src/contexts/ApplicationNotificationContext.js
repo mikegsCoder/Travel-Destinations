@@ -30,7 +30,7 @@ export const ApplicationNotificationProvider = ({
         <ApplicationNotificationContext.Provider value={{notification, addNotification, hideNotification}}>
             {children}
         </ApplicationNotificationContext.Provider>
-    )
+    );
 };
 
 export const useApplicationNotificationContext = () => {

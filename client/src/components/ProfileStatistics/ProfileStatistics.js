@@ -45,7 +45,7 @@ const ProfileStatistics = () => {
 
     const destinationClickHandler = (e) => {
         e.preventDefault();
-        const destinationId = e.currentTarget.id
+        const destinationId = e.currentTarget.id;
 
         navigate(`/details/${destinationId}`);
     };
@@ -83,7 +83,7 @@ const ProfileStatistics = () => {
             <h5>You don't have any destinations!</h5>
             <p>Create your first destination form <Link className='create-link' to="/create">Here</Link>.</p>
         </>
-    )
+    );
 
     const profilePage = (
         <div className='profile-card' >
@@ -135,7 +135,7 @@ const ProfileStatistics = () => {
         <>
             {isLoading ? <LoadingSpinner /> : profilePage}
         </>
-    )
-}
+    );
+};
 
 export default ProfileStatistics;

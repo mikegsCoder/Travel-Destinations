@@ -92,6 +92,6 @@ const Login = () => {
             {isLoading ? <LoadingSpinner /> : loginPage}
         </>
     );
-}
+};
 
 export default Login;

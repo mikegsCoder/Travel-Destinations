@@ -17,7 +17,7 @@ const EditComment = () => {
     const { addInvalidDataNotification } = useInvalidDataNotificationContext();
     const [comment, setComment] = useCommentState(commentId);
     const [isLoading, setIsLoading] = useState(false);
-    const [errors, setErrors] = useState('')
+    const [errors, setErrors] = useState('');
     const navigate = useNavigate();
 
     const onCommentEdit = (e) => {
@@ -110,6 +110,6 @@ const EditComment = () => {
             {isLoading ? <LoadingSpinner /> : editCommentPage}
         </>
     );
-}
+};
 
 export default EditComment;

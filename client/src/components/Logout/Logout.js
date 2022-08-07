@@ -1,6 +1,5 @@
-import { useNavigate } from 'react-router-dom';
-
 import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import * as authService from '../../services/authService';
 import * as constants from '../../constants/constants';
@@ -28,7 +27,7 @@ const Logout = () => {
                 setIsLoading(false);
                 addNotification(err, types.danger);
             });
-    }, [])
+    }, []);
 
     return (
         <>

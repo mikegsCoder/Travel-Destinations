@@ -29,10 +29,11 @@ export const InvalidDataNotificationProvider = ({
         <InvalidDataNotificationContext.Provider value={{errors, addInvalidDataNotification}}>
             {children}
         </InvalidDataNotificationContext.Provider>
-    )
+    );
 };
 
 export const useInvalidDataNotificationContext = () => {
     const state = useContext(InvalidDataNotificationContext);
+    
     return state;
 };

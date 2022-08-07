@@ -1,7 +1,7 @@
 import './CommentCard.css';
 
-import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import * as commentService from '../../../services/commentService';
 import * as constants from '../../../constants/constants';
@@ -20,12 +20,12 @@ const DestinationCard = ({
     const editClickHandler = (e) => {
         e.preventDefault();
         navigate(`/edit-comment/${comment._id}`);
-    }
+    };
 
     const deleteClickHandler = (e) => {
         e.preventDefault();
         setShowDeleteDialog(true);
-    }
+    };
 
     const deleteHandler = (e) => {
         e.preventDefault();
@@ -69,6 +69,6 @@ const DestinationCard = ({
             </div>
         </li>
     );
-}
+};
 
 export default DestinationCard;

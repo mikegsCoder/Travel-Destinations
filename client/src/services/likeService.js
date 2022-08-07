@@ -1,7 +1,8 @@
 import * as request from './requester';
 import * as constants from '../constants/constants';
 
-export const like = (userId, destinationId) => request.post(`${constants.baseUrl.data}/likes`, {userId, destinationId});
+export const like = (userId, destinationId) => 
+    request.post(`${constants.baseUrl.data}/likes`, {userId, destinationId});
 
 export const getDestinationLikes = (destinationId) => {
     const query = encodeURIComponent(`destinationId="${destinationId}"`);
@@ -13,5 +14,5 @@ export const getDestinationLikes = (destinationId) => {
 export const getLikesByUseId = (userId) => {
     const query = encodeURIComponent(`_ownerId="${userId}"`);
 
-    return request.get(`${constants.baseUrl.data}/likes?where=${query}&count`)
+    return request.get(`${constants.baseUrl.data}/likes?where=${query}&count`);
 };

@@ -28,7 +28,7 @@ export const getCommentsByUseId = (userId) => {
 export const getCommentsCountBydestinationId = (destinationId) => {
     const query = encodeURIComponent(`destinationId="${destinationId}"`);
 
-    return request.get(`${constants.baseUrl.data}/comments?where=${query}&count`)
+    return request.get(`${constants.baseUrl.data}/comments?where=${query}&count`);
 };
 
 export const getCommentsPaginated = (pageSize, page, destinationId) => {
@@ -36,4 +36,4 @@ export const getCommentsPaginated = (pageSize, page, destinationId) => {
     const comments = (page) => `${constants.baseUrl.data}/comments?where=${query}&offset=${(page - 1) * pageSize}&pageSize=${pageSize}`;
 
     return request.get(comments(page));
-}
+};

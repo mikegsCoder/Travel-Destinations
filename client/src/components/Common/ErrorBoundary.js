@@ -11,11 +11,11 @@ class ErrorBoundary extends Component {
 
     static getDerivedStateFromError(error) {
         return {error};
-    }
+    };
 
     componentDidCatch(error) {
         console.log(error);
-    }
+    };
 
     render() {
         if (this.state.error) {
@@ -24,10 +24,10 @@ class ErrorBoundary extends Component {
                     Application Error!
                 </h1>
             );
-        }
+        };
 
         return this.props.children;
-    }
-}
+    };
+};
 
 export default ErrorBoundary;

@@ -7,7 +7,7 @@ const request = async (method, url, data) => {
 
         if (auth.accessToken) {
             headers['X-Authorization'] = auth.accessToken;
-        }
+        };
 
         let buildRequest;
 
@@ -22,7 +22,8 @@ const request = async (method, url, data) => {
                 },
                 body: JSON.stringify(data)
             });
-        }
+        };
+
         const response = await buildRequest;
 
         // console.log(response);
@@ -31,10 +32,10 @@ const request = async (method, url, data) => {
             return response;
         } else {
             return response.json();
-        }
+        };
     } catch (error) {
         console.log(error);
-    }
+    };
 };
 
 export const get = request.bind({}, 'GET');

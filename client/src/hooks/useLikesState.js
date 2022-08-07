@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+
 import * as likeService from '../services/likeService';
 
 const useLikesState = (destinationId) => {

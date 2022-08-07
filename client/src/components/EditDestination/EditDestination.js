@@ -268,6 +268,6 @@ const EditDestination = () => {
             {isLoading ? <LoadingSpinner /> : editDestinationPage}
         </>
     );
-}
+};
 
 export default EditDestination;

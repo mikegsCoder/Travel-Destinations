@@ -43,6 +43,6 @@ const MyDestinations = () => {
             {isLoading ? <LoadingSpinner /> : byCategory}
         </>
     );
-}
+};
 
 export default MyDestinations;

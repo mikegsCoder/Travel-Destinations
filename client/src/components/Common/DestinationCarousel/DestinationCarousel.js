@@ -14,7 +14,7 @@ const DestinationCarousel = ({
         const destinationId = e.currentTarget.id
 
         navigate(`/details/${destinationId}`);
-    }
+    };
 
     const carousel = (
         <Carousel >
@@ -36,7 +36,7 @@ const DestinationCarousel = ({
                 </Carousel.Item>
             ))}
         </Carousel>
-    )
+    );
 
     return (
         <>
@@ -46,6 +46,6 @@ const DestinationCarousel = ({
             }
         </>
     );
-}
+};
 
 export default DestinationCarousel;

@@ -17,7 +17,7 @@ const CreateComment = () => {
     const { destinationId } = useParams();
     const { addInvalidDataNotification } = useInvalidDataNotificationContext();
     const [isLoading, setIsLoading] = useState(false);
-    const [errors, setErrors] = useState('')
+    const [errors, setErrors] = useState('');
     const navigate = useNavigate();
 
     const onCommentCreate = (e) => {
@@ -103,6 +103,6 @@ const CreateComment = () => {
             {isLoading ? <LoadingSpinner /> : addCommentPage}
         </>
     );
-}
+};
 
 export default CreateComment;

@@ -260,6 +260,6 @@ const CreateDestination = () => {
             {isLoading ? <LoadingSpinner /> : createPage}
         </>
     );
-}
+};
 
 export default CreateDestination;

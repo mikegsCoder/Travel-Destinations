@@ -37,6 +37,6 @@ const MyDestinations = () => {
             {isLoading ? <LoadingSpinner /> : myDestinations}
         </>
     );
-}
+};
 
 export default MyDestinations;
