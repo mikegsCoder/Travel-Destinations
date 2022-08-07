@@ -185,8 +185,7 @@ const Register = () => {
                             <div id="register-message">
                                 <div>
                                     <p>
-                                        Allready have an account?
-                                        <Link to="/login"> Sign in</Link>
+                                        Allready have an account? <Link to="/login">Sign in</Link>
                                     </p>
                                 </div>
                             </div>
