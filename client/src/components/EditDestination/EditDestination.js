@@ -117,7 +117,8 @@ const EditDestination = () => {
     );
 
     const editDestinationPage = (
-        <section id="edit-page" className="edit">
+        destination.category
+        ? <section id="edit-page" className="edit">
             <form id="edit-form" method="POST" onSubmit={destinationEditSubmitHandler}>
                 <fieldset>
                     <legend>Edit Destination</legend>
@@ -258,7 +259,8 @@ const EditDestination = () => {
                     </div>
                 </fieldset>
             </form>
-        </section>
+         </section>
+        : null
     );
 
     return (
