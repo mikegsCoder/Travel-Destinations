@@ -126,6 +126,6 @@
 Give a :star: if you like this app.
 Thank you ❤️!
 
-## License:
+## 📖 License:
 
 This project is licensed under the [MIT License](LICENSE).
