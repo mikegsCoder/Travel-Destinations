@@ -1,6 +1,9 @@
 # Travel Destinations
 
-:dart:  My [ReactJS](https://softuni.bg/trainings/3727/reactjs-june-2022) course project (June 2022) deployed on Firebase 👉 [Travel Destinations](https://travel-destinations-88814.firebaseapp.com/)
+:dart:  My project for the [ReactJS](https://softuni.bg/trainings/3727/reactjs-june-2022) course at SoftUni (June 2022).
+
+## 🔗 **Link to the project**
+&nbsp;&nbsp;&nbsp;&nbsp;**[Travel Destinations](https://travel-destinations-88814.firebaseapp.com/)**
 
 ## :arrow_forward: Getting Started:
 
