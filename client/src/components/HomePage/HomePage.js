@@ -8,7 +8,7 @@ const HomePage = () => {
                 Travel the world
             </p>
             <h1 className="homepage-heading">
-                Share yours best travel destinations
+                Share your best travel destinations
             </h1>
             <p className='homepage-description'>
                 An amazing collection of travel destinations created by our users
