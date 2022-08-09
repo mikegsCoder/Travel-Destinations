@@ -1,6 +1,6 @@
 # Travel Destinations
 
-:dart:  My project for the [ReactJS](https://softuni.bg/trainings/3727/reactjs-june-2022) course at SoftUni (June 2022). This is Web application where you can share your best travel destinations. The project is deployed on Firebase.
+:dart:  My project for the [ReactJS](https://softuni.bg/trainings/3727/reactjs-june-2022) course at SoftUni (June 2022). This is a Web application where you can share the best travel destinations you have visited and to browse such destinations shared by other users. Each destination has title, description, image URL and geolocation. The project is deployed on Firebase.
 
 ## 🔗 **Link to the project:**
 &nbsp;&nbsp;&nbsp;&nbsp;**[Travel Destinations](https://travel-destinations-88814.firebaseapp.com/)**
