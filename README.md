@@ -65,7 +65,7 @@
   - implemented Geolocations with React Leaflet;
   - implemented data validation for Register, Create Destination, Edit Destination, Create Comment and Edit Comment forms;
   - implemented notification providers;
-  - implemented comments list pagination;
+  - implemented comments list server side pagination;
   - implemented 404 (Not Found) component;
   - responsive design.
 
