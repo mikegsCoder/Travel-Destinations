@@ -55,20 +55,20 @@ function App() {
                                     <Route path="/comments/:destinationId" element={<CommentList />} />
                                     <Route path="/map/:destinationId" element={<MapComponent />} />
 
-                                    <Route element={<DestinationOwner />}>
-                                        <Route path="/edit/:destinationId" element={<EditDestination />} />
-                                    </Route>
-
-                                    <Route element={<CommentOwner />}>
-                                        <Route path="/edit-comment/:commentId" element={<EditComment />} />
-                                    </Route>
-
                                     <Route element={<GuardedRoute />}>
                                         <Route path="/logout" element={<Logout />} />
                                         <Route path="/profile" element={<ProfileStatistics />} />
                                         <Route path="/my-destinations" element={<MyDestinations />} />
                                         <Route path="/create" element={<CreateDestination />} />
                                         <Route path="/add-comment/:destinationId" element={<CreateComment />} />
+                                    </Route>
+
+                                    <Route element={<DestinationOwner />}>
+                                        <Route path="/edit/:destinationId" element={<EditDestination />} />
+                                    </Route>
+
+                                    <Route element={<CommentOwner />}>
+                                        <Route path="/edit-comment/:commentId" element={<EditComment />} />
                                     </Route>
 
                                     <Route path="*" element={<NotFound />} />
@@ -81,7 +81,7 @@ function App() {
                 </ApplicationNotificationProvider>
             </AuthProvider>
         </ErrorBoundary>
-    )
-}
+    );
+};
 
 export default App;
