@@ -1,7 +1,3 @@
-//import './App.css';
-
-import 'bootstrap/dist/css/bootstrap.min.css';
-
 import { Routes, Route } from 'react-router-dom';
 
 import { AuthProvider } from './contexts/AuthContext';
@@ -88,4 +84,4 @@ function App() {
     )
 }
 
-export default App
+export default App;
