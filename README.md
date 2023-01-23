@@ -91,7 +91,7 @@
 
  - [SoftUni practice server](https://github.com/softuni-practice-server/softuni-practice-server) 
  - Developed by [Viktor Kostadinov](https://github.com/viktorpts)
- - Populated with data for Travel Destinations application and deployed on Heroku 👉 [Admin Panel](http://travel-destinations-server.herokuapp.com/admin/)
+ - Populated with data for Travel Destinations application and deployed on Render 👉 [Admin Panel](https://traveldestinations.onrender.com/admin/)
 
 ## :framed_picture: Screenshot - Destination Carousel:
 
