@@ -19,7 +19,7 @@
    ```sh
    npm install
    ```
-4. Start the project (by default this project uses remote server deployed on Heroku)
+4. Start the project (by default this project uses remote server deployed on Render)
    ```sh
    npm start
    ```
