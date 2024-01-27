@@ -95,39 +95,39 @@
 
 ## :framed_picture: Screenshot - Home Page:
 
-![TravelDestinations-HomePage](https://travel-destinations-88814.firebaseapp.com/images/screenshots/HomePage.jpg)
+![TravelDestinations-HomePage](https://mikegscoder.github.io/img/TravelDestinations/HomePage.jpg)
 
 ## :framed_picture: Screenshot - Destination Carousel:
 
-![TravelDestinations-AllDestinations](https://travel-destinations-88814.firebaseapp.com/images/screenshots/DestinationCarousel.jpg)
+![TravelDestinations-AllDestinations](https://mikegscoder.github.io/img/TravelDestinations/DestinationCarousel.jpg)
 
 ## :framed_picture: Screenshot - Destination Details:
 
-![TravelDestinations-DestinationDetails](https://travel-destinations-88814.firebaseapp.com/images/screenshots/DestinationDetails.jpg)
+![TravelDestinations-DestinationDetails](https://mikegscoder.github.io/img/TravelDestinations/DestinationDetails.jpg)
 
 ## :framed_picture: Screenshot - Destination Geolocation:
 
-![TravelDestinations-DestinationLocation](https://travel-destinations-88814.firebaseapp.com/images/screenshots/DestinationLocation.jpg)
+![TravelDestinations-DestinationLocation](https://mikegscoder.github.io/img/TravelDestinations/DestinationLocation.jpg)
 
 ## :framed_picture: Screenshot - Register with Data Validation:
 
-![TravelDestinations-Register](https://travel-destinations-88814.firebaseapp.com/images/screenshots/Register.jpg)
+![TravelDestinations-Register](https://mikegscoder.github.io/img/TravelDestinations/Register.jpg)
 
 ## :framed_picture: Screenshot - Create Destination with Data Validation:
 
-![TravelDestinations-CreateDestination](https://travel-destinations-88814.firebaseapp.com/images/screenshots/CreateDestination.jpg)
+![TravelDestinations-CreateDestination](https://mikegscoder.github.io/img/TravelDestinations/CreateDestination.jpg)
 
 ## :framed_picture: Screenshot - Comments List Paginated:
 
-![TravelDestinations-CommentsList](https://travel-destinations-88814.firebaseapp.com/images/screenshots/CommentsList.jpg)
+![TravelDestinations-CommentsList](https://mikegscoder.github.io/img/TravelDestinations/CommentsList.jpg)
 
 ## :framed_picture: Screenshot - User Profile Statistics:
 
-![TravelDestinations-UserProfileStatistics](https://travel-destinations-88814.firebaseapp.com/images/screenshots/UserProfileStatistics.jpg)
+![TravelDestinations-UserProfileStatistics](https://mikegscoder.github.io/img/TravelDestinations/UserProfileStatistics.jpg)
 
 ## :framed_picture: Screenshot - 404 (Not Found):
 
-![TravelDestinations-NotFound](https://travel-destinations-88814.firebaseapp.com/images/screenshots/404.jpg)
+![TravelDestinations-NotFound](https://mikegscoder.github.io/img/TravelDestinations/404.jpg)
 
 ## :v: Leave a feedback
 Give a :star: if you like this app.
