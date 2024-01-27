@@ -93,6 +93,10 @@
  - Developed by [Viktor Kostadinov](https://github.com/viktorpts)
  - Populated with data for Travel Destinations application and deployed on Render 👉 [Admin Panel](https://traveldestinations.onrender.com/admin/)
 
+## :framed_picture: Screenshot - Home Page:
+
+![TravelDestinations-HomePage](https://travel-destinations-88814.firebaseapp.com/images/screenshots/HomePage.jpg)
+
 ## :framed_picture: Screenshot - Destination Carousel:
 
 ![TravelDestinations-AllDestinations](https://travel-destinations-88814.firebaseapp.com/images/screenshots/DestinationCarousel.jpg)
